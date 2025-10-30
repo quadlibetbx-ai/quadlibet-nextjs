@@ -1,7 +1,7 @@
 import './globals.css';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-xport const metadata = {
+export const metadata = {
   title: 'Quadlibét — Official Site',
   description: 'Bronx-born Freestyle. Freestyle. Passion. Legacy.'
 };
