@@ -1,0 +1,14 @@
+.next
+node_modules
+npm-debug.log*
+.yarn*
+.pnpm-store
+.DS_Store
+.next
+node_modules
+out
+*.log
+.next
+node_modules
+out
+*.log
