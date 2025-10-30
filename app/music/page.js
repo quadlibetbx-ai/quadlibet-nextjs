@@ -7,7 +7,7 @@ export default function MusicPage() {
     { title: "Made For Me (Radio)", key: "quadlibetmusic.com/Music/Made For Me.mp3" },
     { title: "Nothing Left to Say (Freestyle Mix)", key: "quadlibetmusic.com/Music/Nothing Left to Say (Freestyle Mix).mp3" },
     { title: "Take Me I'm Yours (Sexy Lady Freestyle Mix)", key: "quadlibetmusic.com/Music/Take Me I'm Yours (Sexy Lady_Latin Freestyle Club Mix).mp3" },
-    { title: "Tainted Love", key: "quadlibetmusic.com/Music/Mood Swings/10. Tainted Love (Flipzide Remix).mp3" }
+    { title: "Tainted Love", key: "PUT/CORRECT/KEY/HERE.mp3" }
   ];
 
   return (
