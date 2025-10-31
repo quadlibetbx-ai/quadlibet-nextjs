@@ -92,7 +92,7 @@ export default function VideoPage() {
                 controls
                 preload="none"
                 poster={poster}
-                onPlay={handlePlay}        {/* <-- add this */}
+                onPlay={handlePlay}
               >
                 <source
                   src={`${v.src}?v=${Date.now()}`}
