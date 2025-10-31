@@ -65,3 +65,49 @@ export default function VideoPage() {
     </main>
   );
 }
+'use client';
+import list from '../data/videos.json';
+
+// ... your helpers (PLACEHOLDER_POSTER, toItem, humanTitle, guessPoster) ...
+
+export default function VideoPage() {
+  // Pause all other media when any video starts
+  const handlePlay = (e) => {
+    document.querySelectorAll('video').forEach(v => { if (v !== e.currentTarget) v.pause(); });
+    document.querySelectorAll('audio').forEach(a => a.pause());
+  };
+
+  const videos = (Array.isArray(list) ? list : []).map(toItem);
+
+  return (
+    <main className="max-w-6xl mx-auto px-4 py-16">
+      {/* ... */}
+      <div className="mt-8 grid md:grid-cols-2 gap-6">
+        {videos.map((v) => {
+          const poster = v.poster || guessPoster(v.src) || PLACEHOLDER_POSTER;
+          return (
+            <figure key={v.src} className="rounded-2xl overflow-hidden border border-white/10 bg-black">
+              <video
+                className="w-full h-full"
+                controls
+                preload="none"
+                poster={poster}
+                onPlay={handlePlay}        {/* <-- add this */}
+              >
+                <source
+                  src={`${v.src}?v=${Date.now()}`}
+                  type={v.src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}
+                />
+                Your browser does not support the video tag.
+              </video>
+              <figcaption className="px-4 py-3 text-sm text-zinc-300 border-t border-white/10">
+                {v.title}
+              </figcaption>
+            </figure>
+          );
+        })}
+      </div>
+    </main>
+  );
+}
+

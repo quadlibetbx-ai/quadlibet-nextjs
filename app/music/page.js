@@ -48,3 +48,38 @@ export default function MusicPage() {
     </main>
   );
 }
+'use client';
+
+export default function MusicPage() {
+  // Pause every other media element when one starts
+  const handlePlay = (e) => {
+    document.querySelectorAll('audio').forEach(a => { if (a !== e.currentTarget) a.pause(); });
+    document.querySelectorAll('video').forEach(v => v.pause());
+  };
+
+  // ... your existing const BASE / urlFor / tracks ...
+
+  return (
+    <main className="max-w-6xl mx-auto px-4 py-16">
+      {/* ... */}
+      <div className="mt-8 grid md:grid-cols-2 gap-6">
+        {tracks.map((t) => {
+          const audioUrl = /* your existing URL logic */;
+          return (
+            <article key={t.title} className="rounded-2xl bg-white/5 border border-white/10 p-4 flex gap-4">
+              {/* ... cover/title ... */}
+              <audio
+                className="mt-3 w-full"
+                controls
+                preload="none"
+                src={audioUrl}
+                onPlay={handlePlay}        {/* <-- add this */}
+              />
+            </article>
+          );
+        })}
+      </div>
+    </main>
+  );
+}
+
