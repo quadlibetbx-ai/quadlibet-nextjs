@@ -1,3 +1,4 @@
+'use client';
 import list from '../data/videos.json';
 
 const PLACEHOLDER_POSTER =
@@ -7,14 +8,9 @@ const PLACEHOLDER_POSTER =
   <text x='50%' y='50%' fill='#bbb' font-size='40' text-anchor='middle' font-family='sans-serif'>Quadlibét • Video</text>
 </svg>`);
 
-// Turn either strings or objects into a uniform video item
 function toItem(entry) {
   if (typeof entry === 'string') {
-    return {
-      src: entry,
-      title: humanTitle(entry),
-      poster: null
-    };
+    return { src: entry, title: humanTitle(entry), poster: null };
   }
   return {
     src: entry.src,
@@ -22,23 +18,23 @@ function toItem(entry) {
     poster: entry.poster || null
   };
 }
-
 function humanTitle(url) {
-  const file = url.split('?')[0].split('/').pop() || '';
-  return file
-    .replace(/\.[^.]+$/, '')
-    .replace(/[-_]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  const file = (url?.split('?')[0] || '').split('/').pop() || '';
+  return file.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
-
 function guessPoster(url) {
-  // Try same path but .jpg as a best-effort poster
-  const base = url.split('?')[0];
+  const base = (url || '').split('?')[0];
   return base.replace(/\.[^.]+$/, '.jpg');
 }
 
 export default function VideoPage() {
+  // Pause other media when one starts
+  const handlePlay = (e) => {
+    const me = e.currentTarget;
+    document.querySelectorAll('video').forEach(v => { if (v !== me) v.pause(); });
+    document.querySelectorAll('audio').forEach(a => a.pause());
+  };
+
   const videos = (Array.isArray(list) ? list : []).map(toItem);
 
   return (
@@ -47,44 +43,9 @@ export default function VideoPage() {
       <p className="mt-2 text-zinc-300">Official videos, live sessions, and behind-the-scenes.</p>
 
       <div className="mt-8 grid md:grid-cols-2 gap-6">
-        {videos.map((v, i) => {
-          const poster = v.poster || guessPoster(v.src) || PLACEHOLDER_POSTER;
-          return (
-            <figure key={v.src} className="rounded-2xl overflow-hidden border border-white/10 bg-black">
-              <video className="w-full h-full" controls preload="none" poster={poster}>
-                <source src={`${v.src}?v=${Date.now()}`} type={v.src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
-                Your browser does not support the video tag.
-              </video>
-              <figcaption className="px-4 py-3 text-sm text-zinc-300 border-t border-white/10">
-                {v.title}
-              </figcaption>
-            </figure>
-          );
-        })}
-      </div>
-    </main>
-  );
-}
-'use client';
-import list from '../data/videos.json';
-
-// ... your helpers (PLACEHOLDER_POSTER, toItem, humanTitle, guessPoster) ...
-
-export default function VideoPage() {
-  // Pause all other media when any video starts
-  const handlePlay = (e) => {
-    document.querySelectorAll('video').forEach(v => { if (v !== e.currentTarget) v.pause(); });
-    document.querySelectorAll('audio').forEach(a => a.pause());
-  };
-
-  const videos = (Array.isArray(list) ? list : []).map(toItem);
-
-  return (
-    <main className="max-w-6xl mx-auto px-4 py-16">
-      {/* ... */}
-      <div className="mt-8 grid md:grid-cols-2 gap-6">
         {videos.map((v) => {
           const poster = v.poster || guessPoster(v.src) || PLACEHOLDER_POSTER;
+          const type = v.src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4';
           return (
             <figure key={v.src} className="rounded-2xl overflow-hidden border border-white/10 bg-black">
               <video
@@ -94,10 +55,7 @@ export default function VideoPage() {
                 poster={poster}
                 onPlay={handlePlay}
               >
-                <source
-                  src={`${v.src}?v=${Date.now()}`}
-                  type={v.src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}
-                />
+                <source src={`${v.src}?v=${Date.now()}`} type={type} />
                 Your browser does not support the video tag.
               </video>
               <figcaption className="px-4 py-3 text-sm text-zinc-300 border-t border-white/10">
@@ -110,4 +68,3 @@ export default function VideoPage() {
     </main>
   );
 }
-
