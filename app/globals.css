@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html { scroll-behavior: smooth; }
-.gradient-text { background: linear-gradient(90deg,#C0C0C0,#D4AF37); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* Global base styles (plain CSS, no @apply) */
+:root { color-scheme: dark; }
+html, body { height: 100%; }
+
+/* Optional small tweaks */
+.container { margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
