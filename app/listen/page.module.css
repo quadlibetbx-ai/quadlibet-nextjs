@@ -1,4 +1,4 @@
-root{
+:global(:root){
   --bg:#0f0f0f; --text:#f1f1f1; --muted:#a3a3a3;
   --card:#141414; --line:#262626; --pill:#1f1f1f;
   --radius:18px;
