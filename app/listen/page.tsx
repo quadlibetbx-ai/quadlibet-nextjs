@@ -1,6 +1,5 @@
-// app/listen/page.tsx
+import type { ReactNode } from "react";
 import styles from "./page.module.css";
-
 export const metadata = {
   title: "Quadlibét — Listen",
   description:
@@ -28,16 +27,14 @@ const LINKS = {
 function Badge({
   href, logo, label, subtle,
 }: {
-  href: string; logo: React.ReactNode; label: string; subtle?: boolean;
+  href: string;
+  logo: ReactNode;   // ← changed
+  label: string;
+  subtle?: boolean;
 }) {
-  return (
-    <a className={`${styles.badge} ${subtle ? styles.subtle : ""}`}
-       href={href} target="_blank" rel="noopener noreferrer">
-      <span className={styles.logo}>{logo}</span>
-      <span className={styles.label}>{label}</span>
-    </a>
-  );
+  ...
 }
+
 
 export default function Listen() {
   return (
