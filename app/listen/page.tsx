@@ -161,7 +161,7 @@ export default function Listen() {
 }
 
 /* ---------- Inline SVG icons (return valid JSX) ---------- */
-function Apple(): JSX.Element {
+function Apple() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
@@ -171,7 +171,7 @@ function Apple(): JSX.Element {
     </svg>
   );
 }
-function Spotify(): JSX.Element {
+function Spotify() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
@@ -181,7 +181,7 @@ function Spotify(): JSX.Element {
     </svg>
   );
 }
-function YouTube(): JSX.Element {
+function YouTube() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
@@ -191,7 +191,7 @@ function YouTube(): JSX.Element {
     </svg>
   );
 }
-function Amazon(): JSX.Element {
+function Amazon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
@@ -201,7 +201,7 @@ function Amazon(): JSX.Element {
     </svg>
   );
 }
-function Deezer(): JSX.Element {
+function Deezer() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M2 15h3v3H2zm4-2h3v5H6zm4-4h3v9h-3zm4-3h3v12h-3zm4-3h3v15h-3z" />
