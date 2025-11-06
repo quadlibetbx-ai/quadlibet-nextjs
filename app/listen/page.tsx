@@ -1,5 +1,5 @@
 // app/listen/page.tsx
-import type { ReactNode } from "react";
+import type { ReactNode, ReactElement } from "react";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -103,7 +103,7 @@ function logoLabel(p: Release["platform"]): string {
   }
 }
 
-function logoFor(p: Release["platform"]): JSX.Element {
+function logoFor(p: Release["platform"]): ReactElement {
   switch (p) {
     case "amazon":  return <Amazon />;
     case "apple":   return <Apple />;
