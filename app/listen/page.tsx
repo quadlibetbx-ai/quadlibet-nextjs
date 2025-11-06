@@ -1,40 +1,44 @@
+// app/listen/page.tsx
 import type { ReactNode } from "react";
 import styles from "./page.module.css";
+
 export const metadata = {
   title: "Quadlibét — Listen",
   description:
     "Stream Quadlibét on Apple Music, Spotify, YouTube, Amazon Music, Tidal, and more.",
-  openGraph: {
-    title: "Quadlibét — Listen",
-    description:
-      "Stream Quadlibét on Apple Music, Spotify, YouTube, Amazon Music, Tidal, and more.",
-    url: "https://quadlibetmusic.com/listen",
-    siteName: "Quadlibét",
-  },
 };
 
 const LINKS = {
-  apple:   "https://music.apple.com/artist/quadlibet",        // TODO: replace
-  spotify: "https://open.spotify.com/artist/...",             // TODO: replace
-  youtube: "https://www.youtube.com/@quadlibetmusic",         // TODO: replace
-  amazon:  "https://music.amazon.com/artists/...",            // TODO: replace
-  tidal:   "https://listen.tidal.com/artist/...",             // TODO: replace
-  deezer:  "https://www.deezer.com/artist/...",               // TODO: replace
-  soundcloud: "https://soundcloud.com/quadlibet",             // optional
-  bandcamp:   "https://quadlibet.bandcamp.com/",              // optional
+  apple: "https://music.apple.com/artist/quadlibet",       // TODO: replace
+  spotify: "https://open.spotify.com/artist/...",          // TODO: replace
+  youtube: "https://www.youtube.com/@quadlibetmusic",      // TODO: replace
+  amazon: "https://music.amazon.com/artists/...",          // TODO: replace
+  tidal: "https://listen.tidal.com/artist/...",            // TODO: replace
+  deezer: "https://www.deezer.com/artist/...",             // TODO: replace
+  soundcloud: "https://soundcloud.com/quadlibet",          // optional
+  bandcamp: "https://quadlibet.bandcamp.com/",             // optional
 };
 
-function Badge({
-  href, logo, label, subtle,
-}: {
+type BadgeProps = {
   href: string;
-  logo: ReactNode;   // ← changed
+  logo: ReactNode;
   label: string;
   subtle?: boolean;
-}) {
-  ...
-}
+};
 
+function Badge({ href, logo, label, subtle }: BadgeProps) {
+  return (
+    <a
+      className={`${styles.badge} ${subtle ? styles.subtle : ""}`}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span className={styles.logo}>{logo}</span>
+      <span className={styles.label}>{label}</span>
+    </a>
+  );
+}
 
 export default function Listen() {
   return (
@@ -60,7 +64,7 @@ export default function Listen() {
   );
 }
 
-/* ——— Simple inline SVG logos ——— */
+/* ---------- Minimal inline SVG icons ---------- */
 function Apple() { return (<svg viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 1.43c.02 1.02-.38 1.98-1.08 2.71-.7.73-1.83 1.27-2.87 1.19-.12-1.02.4-2.07 1.08-2.79.73-.78 1.95-1.34 2.87-1.11zM20.7 17.09c-.56 1.28-.84 1.86-1.56 3-1 1.55-2.39 3.48-4.13 3.5-1.53.03-1.94-1-4.04-.98-2.1.01-2.55 1.01-4.09.99-1.74-.02-3.07-1.78-4.07-3.31C.75 17.79-.31 13.55 1.7 10.9c1.11-1.5 2.87-2.46 4.87-2.5 1.9-.05 3.62 1.04 4.06 1.04.42 0 2.8-1.28 4.74-1.09.8.03 3.05.32 4.49 2.44-3.95 2.16-3.31 7.33.9 6.3z"/></svg>); }
 function Spotify() { return (<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5A10.5 10.5 0 1 0 22.5 12 10.5 10.5 0 0 0 12 1.5zm5.21 15.14c-.19.31-.6.41-.9.22-2.47-1.51-5.58-1.85-9.24-1.01a.75.75 0 1 1-.3-1.47c3.99-.9 7.4-.5 10.12 1.16.3.18.4.58.22.9zm1.26-2.82c-.24.39-.75.52-1.14.28-2.85-1.74-7.2-2.25-10.58-1.23a.75.75 0 1 1-.47-1.44c3.87-1.16 8.65-.6 11.87 1.35.39.24.52.74.32 1.18zm.11-3.05c-3.37-2-9.02-2.19-12.24-1.19a.75.75 0 0 1-.45-1.43c3.69-1.12 9.94-.9 13.74 1.33a.9.9 0 1 1-.93 1.55z"/></svg>); }
 function YouTube() { return (<svg viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 7.2s-.23-1.63-.94-2.34c-.9-.94-1.9-.94-2.36-.99C16.7 3.5 12 3.5 12 3.5s-4.7 0-8.2.37c-.46.05-1.46.05-2.36.99C.73 5.57.5 7.2.5 7.2S.25 9.1.25 11v1.99c0 1.9.25 3.8.25 3.8s.23 1.63.94 2.34c.9.94 2.08.91 2.61 1.01 1.9.18 8 .36 8 .36s4.7-.01 8.2-.37c.46-.05 1.46-.05 2.36-.99.71-.71.94-2.34.94-2.34s.25-1.9.25-3.8V11c0-1.9-.25-3.8-.25-3.8zM9.75 14.9V8.6l6.01 3.16-6.01 3.14z"/></svg>); }
