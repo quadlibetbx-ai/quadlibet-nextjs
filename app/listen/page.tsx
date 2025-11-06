@@ -85,6 +85,28 @@ function Badge({ href, logo, label, subtle }: BadgeProps) {
   );
 }
 
+// helpers — add above `export default function Listen()`
+function logoLabel(p: Release["platform"]): string {
+  switch (p) {
+    case "amazon":  return "Amazon •";
+    case "apple":   return "Apple •";
+    case "spotify": return "Spotify •";
+    case "deezer":  return "Deezer •";
+    default:        return "";
+  }
+}
+
+function logoFor(p: Release["platform"]): JSX.Element {
+  switch (p) {
+    case "amazon":  return <Amazon />;
+    case "apple":   return <Apple />;
+    case "spotify": return <Spotify />;
+    case "deezer":  return <Deezer />;
+    default:        return <Apple />;
+  }
+}
+
+
 export default function Listen() {
   return (
     <main className={styles.wrap}>
