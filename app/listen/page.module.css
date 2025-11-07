@@ -1,56 +1,96 @@
-/* pure CSS module – no :root here */
+/* app/listen/page.module.css */
+
 .wrap {
-  min-height: 100vh;
-  background: var(--bg, #0f0f0f);
-  color: var(--text, #f1f1f1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  color: var(--text);
+}
+
+.header {
   text-align: center;
+  margin-bottom: 28px;
 }
 
 .title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  margin: 0 0 6px;
 }
 
 .tag {
-  font-size: 1.1rem;
-  opacity: 0.8;
-  margin-bottom: 2rem;
+  opacity: 0.7;
+  font-size: 0.95rem;
 }
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (min-width: 560px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 860px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: #181818;
-  padding: 0.75rem 1.25rem;
-  border-radius: 9999px;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   text-decoration: none;
-  color: var(--text, #f1f1f1);
-  font-weight: 500;
-  border: 1px solid #2a2a2a;
-  transition: background 0.2s ease;
+  color: inherit;
+  transition: transform .08s ease, background .12s ease, border-color .12s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .badge:hover {
-  background: var(--accent, #ff3366);
-  color: white;
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+}
+
+.subtle {
+  opacity: 0.9;
+}
+
+.logo {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.logo svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.label {
+  font-size: 0.95rem;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footer {
-  margin-top: 3rem;
+  margin-top: 36px;
+  text-align: center;
+  opacity: 0.6;
   font-size: 0.9rem;
-  opacity: 0.5;
+}
+
+/* Section headings spacing */
+h2.title {
+  margin-top: 28px;
 }
