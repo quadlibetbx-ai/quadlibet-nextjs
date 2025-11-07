@@ -1,5 +1,5 @@
 // app/listen/page.tsx
-import type { ReactNode, ReactElement } from "react";
+import type { ReactNode } from "react";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -8,15 +8,45 @@ export const metadata = {
     "Stream Quadlibét on Apple Music, Spotify, YouTube, Amazon Music, Tidal, and more.",
 };
 
-// Primary artist pages
+/* ------------ Artist pages (top buttons) ------------ */
 const ARTISTS = {
   apple:   "https://music.apple.com/us/artist/quadlibèt/1521608593",
   spotify: "https://open.spotify.com/artist/2QumB3PuOFMtHvrWbh5DIJ?si=aeCAbTRTTAKbfReOQIQYiA",
   youtube: "https://www.youtube.com/@quadlibetmusic",
 };
 
-// Featured audio releases
+/* ------------ Featured Singles (Apple titles) ------------ */
+/* We’ll keep this small & curated for a polished hero row */
+const FEATURED = [
+  {
+    title: "Made for Me — Single",
+    apple: "https://music.apple.com/us/album/made-for-me-single/1774374018",
+  },
+  {
+    title: "Nothing Left to Say — Single",
+    apple: "https://music.apple.com/us/album/nothing-left-to-say-single/1813530189",
+  },
+  {
+    title: "Set Me Free — Single",
+    apple: "https://music.apple.com/us/album/set-me-free-single/1364295167",
+  },
+  {
+    title: "Take Me I’m Yours (2022 Remix) — Single",
+    apple: "https://music.apple.com/us/album/take-me-im-yours-sexy-lady-2022-remix-single/1648940177",
+  },
+  {
+    title: "Tainted Love — Single",
+    apple: "https://music.apple.com/us/album/tainted-love-single/1067457524",
+  },
+  {
+    title: "Mood Swings",
+    apple: "https://music.apple.com/us/album/mood-swings/1408256856",
+  },
+];
+
+/* ------------ Full link lists you already provided (unchanged) ------------ */
 type Release = { label: string; href: string; platform: "amazon" | "apple" | "spotify" | "deezer" };
+
 const RELEASES: Release[] = [
   // Amazon Music
   { platform: "amazon", label: "Album • B0F87MPH7R", href: "https://amazon.com/music/player/albums/B0F87MPH7R?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_Fk3eU8a1lYSOlnmlzm5OULfdb" },
@@ -28,16 +58,15 @@ const RELEASES: Release[] = [
   { platform: "amazon", label: "Album • B0BHLSW3WK", href: "https://amazon.com/music/player/albums/B0BHLSW3WK?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_EDuZeBx0scC3Dd88ppxEmXQjh" },
   { platform: "amazon", label: "Album • B01N5EKDS3", href: "https://amazon.com/music/player/albums/B01N5EKDS3?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_PlgS8VfUeV2tHThLqKwxVleW8" },
 
-  // Apple Music
+  // Apple Music (kept as-is)
   { platform: "apple", label: "Tainted Love — Single", href: "https://music.apple.com/us/album/tainted-love-single/1067457524" },
   { platform: "apple", label: "Mood Swings", href: "https://music.apple.com/us/album/mood-swings/1408256856" },
-  { platform: "apple", label: "Take Me I'm Yours (2022 Remix) — Single", href: "https://music.apple.com/us/album/take-me-im-yours-sexy-lady-2022-remix-single/1648940177" },
   { platform: "apple", label: "Home for Christmas (feat. Willie Valentin & Synthia Figueroa)", href: "https://music.apple.com/us/album/home-for-christmas-feat-willie-valentin-synthia-figueroa/1184885974" },
   { platform: "apple", label: "Home for Christmas (feat. Brittney) — Single", href: "https://music.apple.com/us/album/home-for-christmas-feat-brittney-single/1547021153" },
   { platform: "apple", label: "Made for Me — Single", href: "https://music.apple.com/us/album/made-for-me-single/1774374018" },
   { platform: "apple", label: "Nothing Left to Say — Single", href: "https://music.apple.com/us/album/nothing-left-to-say-single/1813530189" },
   { platform: "apple", label: "Set Me Free — Single", href: "https://music.apple.com/us/album/set-me-free-single/1364295167" },
-  { platform: "apple", label: "Take Me I'm Yours — Song", href: "https://music.apple.com/us/song/take-me-im-yours/270944197" },
+  { platform: "apple", label: "Take Me I’m Yours — Song", href: "https://music.apple.com/us/song/take-me-im-yours/270944197" },
   { platform: "apple", label: "You Don’t Know the Pain — Song", href: "https://music.apple.com/us/song/you-dont-know-the-pain/526304781" },
 
   // Spotify
@@ -59,7 +88,6 @@ const RELEASES: Release[] = [
   { platform: "deezer", label: "Deezer Link 6", href: "https://link.deezer.com/s/31wzub6niPNZqdIEkS5os" },
 ];
 
-// Featured videos (YouTube)
 const VIDEOS: { label: string; href: string }[] = [
   { label: "YouTube Video 1", href: "https://youtu.be/4bIUpDUwBng?si=nqB09W79_GFCUTa6" },
   { label: "YouTube Video 2", href: "https://youtu.be/9VPABCfAGrw?si=XLxyXq1R8tx1q2DD" },
@@ -71,6 +99,7 @@ const VIDEOS: { label: string; href: string }[] = [
   { label: "YouTube Video 8", href: "https://youtu.be/cBkUaqNyVZs?si=r9_BL3Ps0OcDxZsK" },
 ];
 
+/* ------------ Small badge button ---------- */
 type BadgeProps = {
   href: string;
   logo: ReactNode;
@@ -85,6 +114,7 @@ function Badge({ href, logo, label, subtle }: BadgeProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      title={label}
     >
       <span className={styles.logo}>{logo}</span>
       <span className={styles.label}>{label}</span>
@@ -92,7 +122,7 @@ function Badge({ href, logo, label, subtle }: BadgeProps) {
   );
 }
 
-// helpers — add above `export default function Listen()`
+/* ------------ Helpers for the big “More releases” grid ---------- */
 function logoLabel(p: Release["platform"]): string {
   switch (p) {
     case "amazon":  return "Amazon •";
@@ -102,8 +132,7 @@ function logoLabel(p: Release["platform"]): string {
     default:        return "";
   }
 }
-
-function logoFor(p: Release["platform"]): ReactElement {
+function logoFor(p: Release["platform"]) {
   switch (p) {
     case "amazon":  return <Amazon />;
     case "apple":   return <Apple />;
@@ -113,7 +142,7 @@ function logoFor(p: Release["platform"]): ReactElement {
   }
 }
 
-
+/* ------------ Page ------------ */
 export default function Listen() {
   return (
     <main className={styles.wrap}>
@@ -129,29 +158,41 @@ export default function Listen() {
         <Badge href={ARTISTS.youtube} label="YouTube – Artist" logo={<YouTube />} subtle />
       </section>
 
-      {/* Featured releases */}
-      <h2 className={styles.title} style={{ marginTop: "2rem", fontSize: "1.6rem" }}>
-        Featured Releases
+      {/* Featured Singles (Apple titles for consistency) */}
+      <h2 className={styles.title} style={{ marginTop: "28px", fontSize: "1.6rem" }}>
+        Featured Singles
       </h2>
       <section className={styles.grid}>
-        {RELEASES.map((r, i) => (
-          <Badge
-            key={i}
-            href={r.href}
-            label={`${logoLabel(r.platform)} ${r.label}`}
-            logo={logoFor(r.platform)}
-            subtle
-          />
+        {FEATURED.map((f) => (
+          <Badge key={f.title} href={f.apple} label={f.title} logo={<Apple />} />
         ))}
       </section>
 
-      {/* Featured videos */}
-      <h2 className={styles.title} style={{ marginTop: "2rem", fontSize: "1.6rem" }}>
+      {/* Keep everything else but tuck it under a clean toggle */}
+      <details style={{ marginTop: "28px" }} open>
+        <summary className={styles.title} style={{ cursor: "pointer", fontSize: "1.3rem" }}>
+          More releases
+        </summary>
+        <section className={styles.grid} style={{ marginTop: "12px" }}>
+          {RELEASES.map((r, i) => (
+            <Badge
+              key={i}
+              href={r.href}
+              label={`${logoLabel(r.platform)} ${r.label}`}
+              logo={logoFor(r.platform)}
+              subtle
+            />
+          ))}
+        </section>
+      </details>
+
+      {/* Videos */}
+      <h2 className={styles.title} style={{ marginTop: "28px", fontSize: "1.6rem" }}>
         Featured Videos
       </h2>
       <section className={styles.grid}>
-        {VIDEOS.map((v, i) => (
-          <Badge key={i} href={v.href} label={v.label} logo={<YouTube />} subtle />
+        {VIDEOS.map((v) => (
+          <Badge key={v.href} href={v.href} label={v.label} logo={<YouTube />} subtle />
         ))}
       </section>
 
@@ -160,7 +201,7 @@ export default function Listen() {
   );
 }
 
-/* ---------- Inline SVG icons (return valid JSX) ---------- */
+/* ---------- Inline SVG icons (no explicit return types) ---------- */
 function Apple() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
