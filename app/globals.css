@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* Global base styles (plain CSS, no @apply) */
+:root {
+  color-scheme: dark;
+
+  /* Quadlibét color variables */
+  --bg: #0f0f0f;
+  --text: #f1f1f1;
+  --accent: #ff3366;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Optional small tweaks */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
