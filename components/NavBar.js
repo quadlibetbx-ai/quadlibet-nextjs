@@ -7,7 +7,7 @@ export default function NavBar() {
           <span className="text-xl tracking-wide font-extrabold">QUADLIBÉT</span>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <a href="/music" className="hover:text-zinc-300">Music</a>
+          <a href="/listen" className="hover:text-zinc-300">Listen</a>
           <a href="/video" className="hover:text-zinc-300">Video</a>
           <a href="/photos" className="hover:text-zinc-300">Photos</a>
           <a href="/about" className="hover:text-zinc-300">About</a>
