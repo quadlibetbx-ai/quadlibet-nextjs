@@ -63,7 +63,7 @@ export default function PressPage() {
         <h2 className="text-2xl font-bold mb-3">Contact</h2>
         <p className="text-zinc-300">
           Booking & Press: <br />
-          <strong>Email:</strong> your@email.com
+          <strong>Email:</strong> quadlibetmusic@gmail.com
         </p>
       </section>
     </main>
