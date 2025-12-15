@@ -28,10 +28,21 @@ const ARTIST: Required<Pick<Links, "apple" | "spotify" | "youtube">> = {
 
 const FEATURED: Release[] = [
   {
+    title: "Take Me I’m Yours — Song (Tazmania Freestyle Vol. 4: Still Goin)",
+    links: {
+      apple: "https://music.apple.com/us/song/take-me-im-yours/270944197",
+    },
+  },
+  {
+    title: "Take Me I’m Yours (Sexy Lady 2022 Remix) — Single",
+    links: {
+      apple: "https://music.apple.com/us/album/take-me-im-yours-sexy-lady-2022-remix/1707401898",
+    },
+  },
+  {
     title: "Made for Me — Single",
     links: {
       apple: "https://music.apple.com/us/album/made-for-me-single/1774374018",
-      // add spotify/amazon/deezer/youtube later when you want
     },
   },
   {
