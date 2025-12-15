@@ -24,7 +24,7 @@ const ARTIST: Required<Pick<Links, "apple" | "spotify" | "youtube">> = {
   apple: "https://music.apple.com/us/artist/quadlib%C3%A9t/1521608593",
   spotify: "https://open.spotify.com/artist/2QumB3PuOFMtHvrWbh5DIJ",
   // IMPORTANT: replace this with your REAL YouTube channel URL (see Step B)
-  youtube: "https://www.youtube.com/watch?v=4bIUpDUwBng&list=RD4bIUpDUwBng&start_radio=1",
+  youtube: "https://www.youtube.com/playlist?list=OLAK5uy_klrxcS42VpwCdUAZ25AZEEKHPstahCxAY",
 };
 
 const FEATURED: Release[] = [
