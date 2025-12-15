@@ -21,8 +21,8 @@ type Release = {
 };
 
 const ARTIST: Required<Pick<Links, "apple" | "spotify" | "youtube">> = {
-  apple: "https://music.apple.com/us/artist/quadlib%C3%A9t/1521608593",
-  spotify: "https://open.spotify.com/artist/2QumB3PuOFMtHvrWbh5DIJ",
+  apple: "https://music.apple.com/us/album/mood-swings/1408256856",
+  spotify: "https://open.spotify.com/artist/18ssdZ9dy9g4xSjBxQz3n4",
   // IMPORTANT: replace this with your REAL YouTube channel URL (see Step B)
   youtube: "https://www.youtube.com/playlist?list=OLAK5uy_klrxcS42VpwCdUAZ25AZEEKHPstahCxAY",
 };
