@@ -39,9 +39,7 @@ export default function PressPage() {
         <p className="text-zinc-300 leading-relaxed">
           Today, Quadlibét is led by Roger Alexander alongside Moses Lopez and
           Bruce Ortiz, continuing the group’s legacy while expanding its sound
-          into modern dance and electronic spaces. Longtime collaborator Rogelio
-          Aponte contributes to production, songwriting, and melodic
-          arrangements.
+          into modern dance and electronic spaces.
         </p>
       </section>
 
