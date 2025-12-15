@@ -27,7 +27,7 @@ export default function HomePage() {
               Born in the Bronx in 1985, <strong>Quadlibét</strong> emerged from the heart of the Freestyle movement. Founded by cousins <strong>Roger</strong> and <strong>Darryl Alexander</strong>, the group first lit up the scene with an early demo of <em>“Take Me I’m Yours”</em> produced by <strong>Ancil Cox</strong>.
             </p>
             <p>
-              Today, <strong>Roger Alexander</strong>, <strong>Moses Lopez</strong>, and <strong>Bruce Ortiz</strong> remain the heart of Quadlibét, joined by <strong>Rogelio Aponte</strong>—a longtime collaborator known for production expertise, melody arrangements, and songwriting contributions.
+              Today, <strong>Roger Alexander</strong>, <strong>Moses Lopez</strong>, and <strong>Bruce Ortiz</strong> remain the heart of Quadlibét.
             </p>
             <div className="flex gap-3 pt-2">
               <a href="/about" className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15">Read full bio</a>
