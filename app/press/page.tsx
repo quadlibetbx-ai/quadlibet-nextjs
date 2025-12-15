@@ -1,69 +1,48 @@
 export const metadata = {
   title: "Quadlibét — Press Kit",
-  description:
-    "Official press kit for Quadlibét. Bio, music highlights, and contact information.",
+  description: "Download the Quadlibét press kit and one-sheet.",
 };
 
 export default function PressPage() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-16 text-zinc-100">
-      <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-        Quadlibét — Press Kit
-      </h1>
-
-      <p className="text-zinc-300 mb-10">
-        Bronx-born Freestyle / Dance / Electronic
+    <main className="max-w-5xl mx-auto px-4 py-16">
+      <h1 className="text-3xl md:text-4xl font-extrabold">Press Kit</h1>
+      <p className="mt-3 text-zinc-300">
+        Download the official Quadlibét press materials.
       </p>
 
-      {/* Short Bio */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-bold mb-3">Short Bio</h2>
-        <p className="text-zinc-300 leading-relaxed">
-          Quadlibét is a Bronx-born freestyle group blending classic Latin
-          freestyle energy with modern dance and electronic production. Founded
-          in the mid-1980s and rooted in New York’s club culture, the group
-          delivers melodic hooks, emotional storytelling, and rhythms built to
-          move crowds.
-        </p>
-      </section>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <a
+          href="/press/Quadlibet-Press-Kit.pdf"
+          className="block rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="text-lg font-semibold">Full Press Kit (PDF)</div>
+          <div className="mt-1 text-sm text-zinc-300">
+            Artist bio, highlights, and media-ready info.
+          </div>
+        </a>
 
-      {/* Full Bio */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-bold mb-3">Full Bio</h2>
-        <p className="text-zinc-300 leading-relaxed mb-4">
-          Formed in the Bronx in 1985, Quadlibét emerged from the heart of New
-          York’s freestyle movement. Founded by cousins Roger Alexander and
-          Darryl Alexander, the group first gained attention with early demo
-          recordings including “Take Me I’m Yours,” produced by Ancil Cox.
-        </p>
-        <p className="text-zinc-300 leading-relaxed">
-          Today, Quadlibét is led by Roger Alexander alongside Moses Lopez and
-          Bruce Ortiz, continuing the group’s legacy while expanding its sound
-          into modern dance and electronic spaces.
-        </p>
-      </section>
+        <a
+          href="/press/Quadlibet-One-Sheet.pdf"
+          className="block rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="text-lg font-semibold">One-Sheet (PDF)</div>
+          <div className="mt-1 text-sm text-zinc-300">
+            Quick overview for promoters and venues.
+          </div>
+        </a>
+      </div>
 
-      {/* Music Highlights */}
-      <section className="mb-10">
-        <h2 className="text-2xl font-bold mb-3">Music Highlights</h2>
-        <ul className="list-disc list-inside text-zinc-300 space-y-1">
-          <li>Mood Swings (Album)</li>
-          <li>Take Me I’m Yours</li>
-          <li>Take Me I’m Yours (Sexy Lady 2022 Remix)</li>
-          <li>Tainted Love</li>
-          <li>Set Me Free</li>
-          <li>Nothing Left to Say</li>
-        </ul>
-      </section>
-
-      {/* Contact */}
-      <section>
-        <h2 className="text-2xl font-bold mb-3">Contact</h2>
-        <p className="text-zinc-300">
-          Booking & Press: <br />
-          <strong>Email:</strong> quadlibetmusic@gmail.com
-        </p>
-      </section>
+      <p className="mt-10 text-sm text-zinc-400">
+        Contact:{" "}
+        <a className="underline" href="mailto:quadlibetmusic@gmail.com">
+          quadlibetmusic@gmail.com
+        </a>
+      </p>
     </main>
   );
 }
