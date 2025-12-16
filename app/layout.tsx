@@ -1,5 +1,5 @@
 import "./globals.css";
-import NavBar from "../components/NavBar.js";
+import NavBar from "../components/NavBar";
 
 export const metadata = {
   title: "Quadlibét — Official Site",
