@@ -4,7 +4,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center opacity-35" />
+          <div className="h-full w-full bg-[url('https://www.dropbox.com/scl/fi/q1jhkx5r5x6hs344ee1aw/IMG_3088.JPG?rlkey=i2nv7mmr8yh3z963jtild9kka&st=d4gapsio&dl=0')] bg-cover bg-center opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80" />
         </div>
         <div className="max-w-6xl mx-auto px-4 py-28 md:py-36">
