@@ -6,9 +6,7 @@ export default function NavBar() {
           <div className="h-9 w-9 rounded-full bg-gradient-to-br from-zinc-200 to-zinc-500 flex items-center justify-center text-black font-black">
             QB
           </div>
-          <span className="text-xl tracking-wide font-extrabold">
-            QUADLIBÉT
-          </span>
+          <span className="text-xl tracking-wide font-extrabold">QUADLIBÉT</span>
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
