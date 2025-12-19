@@ -4,9 +4,12 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2400&auto=format&fit=crop')] bg-cover bg-center opacity-35" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80" />
-        </div>
+  <div
+    className="h-full w-full bg-[url('/images/home/home-1.jpg')] bg-cover bg-center"
+    style={{ filter: "brightness(0.85) contrast(1.05)" }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/70" />
+</div>
         <div className="max-w-6xl mx-auto px-4 py-28 md:py-36">
           <p className="uppercase tracking-[0.3em] text-xs md:text-sm text-zinc-300">Born in the Bronx · Built on rhythm</p>
           <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-[1.05]">Freestyle. Passion. Legacy.<br className="hidden md:block"/> This is <span className="gradient-text">Quadlibét</span>.</h1>
@@ -35,7 +38,11 @@ export default function HomePage() {
             </div>
           </div>
           <div className="rounded-2xl overflow-hidden border border-white/10">
-            <img alt="Quadlibét promo" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1518972559570-7cc1309f3229?q=80&w=1600&auto=format&fit=crop" />
+            <img
+  alt="Quadlibét promo"
+  src="/images/home/home-2.jpg"
+  className="w-full h-[320px] md:h-[400px] object-cover rounded-xl"
+/>
           </div>
         </div>
       </section>
