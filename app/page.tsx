@@ -5,12 +5,13 @@ export default function HomePage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
   <div
-    className="h-full w-full bg-[url('/images/home/home-1.jpg')] bg-cover bg-center"
+    className="h-full w-full bg-[url('/images/home/home-1.jpg')] bg-cover bg-[position:75%_50%] opacity-35"
     style={{ filter: "brightness(0.85) contrast(1.05)" }}
   />
-  <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-black/55" />
+  <div className="<div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/35 to-black/15" />
 </div>
         <div className="max-w-6xl mx-auto px-4 py-28 md:py-36">
+  <div className="max-w-xl pt-10 md:pt-14">
           <p className="uppercase tracking-[0.3em] text-xs md:text-sm text-zinc-300">Born in the Bronx · Built on rhythm</p>
           <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-[1.05]">Freestyle. Passion. Legacy.<br className="hidden md:block"/> This is <span className="gradient-text">Quadlibét</span>.</h1>
           <p className="mt-5 text-zinc-300 max-w-2xl">Bronx-born Freestyle energy, reimagined for today. New music, classic spirit, and a legacy that keeps the dance floor alive.</p>
@@ -19,8 +20,9 @@ export default function HomePage() {
             <a href="/video" className="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/15 font-semibold">Watch Video</a>
           </div>
         </div>
+      </div>
+      
       </section>
-
       {/* About Snippet */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-extrabold">About Quadlibét</h2>
@@ -40,8 +42,8 @@ export default function HomePage() {
           <div className="rounded-2xl overflow-hidden border border-white/10">
             <img
   alt="Quadlibét promo"
+  className="w-full h-full object-cover brightness-90 contrast-95"
   src="/images/home/home-2.jpg"
-  className="w-full h-[320px] md:h-[400px] object-cover rounded-xl"
 />
           </div>
         </div>
