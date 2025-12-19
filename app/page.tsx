@@ -8,7 +8,7 @@ export default function HomePage() {
     className="h-full w-full bg-[url('/images/home/home-1.jpg')] bg-cover bg-center"
     style={{ filter: "brightness(0.85) contrast(1.05)" }}
   />
-  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/70" />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-black/55" />
 </div>
         <div className="max-w-6xl mx-auto px-4 py-28 md:py-36">
           <p className="uppercase tracking-[0.3em] text-xs md:text-sm text-zinc-300">Born in the Bronx · Built on rhythm</p>
