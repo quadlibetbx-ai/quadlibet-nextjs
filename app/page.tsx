@@ -7,6 +7,7 @@ export default function HomePage() {
   <div
     className="h-full w-full bg-[url('/images/home/home-1.jpg')] bg-cover bg-[position:75%_50%] opacity-35"
     style={{ filter: "brightness(0.85) contrast(1.05)" }}
+    <div className="max-w-xl">
   />
   <div className="<div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/35 to-black/15" />
 </div>
