@@ -14,8 +14,8 @@ export default function NavBar() {
           <a href="/video" className="hover:text-zinc-300">Video</a>
           <a href="/photos" className="hover:text-zinc-300">Photos</a>
           <a href="/about" className="hover:text-zinc-300">About</a>
-          <a href="/press" className="hover:text-zinc-300">Press</a>
           <a href="/contact" className="hover:text-zinc-300">Contact</a>
+          <a href="/press" className="hover:text-zinc-300">Press</a>
         </nav>
 
         <a
