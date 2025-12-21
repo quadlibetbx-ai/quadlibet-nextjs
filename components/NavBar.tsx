@@ -1,3 +1,5 @@
+import BackgroundMusicToggle from "./BackgroundMusicToggle";
+
 export default function NavBar() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
@@ -18,12 +20,16 @@ export default function NavBar() {
           <a href="/press" className="hover:text-zinc-300">Press</a>
         </nav>
 
-        <a
-          href="/subscribe"
-          className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-[#0096FF] hover:bg-[#0c82d8] text-white text-sm font-semibold shadow-lg shadow-blue-500/20"
-        >
-          Subscribe
-        </a>
+        <div className="flex items-center gap-3">
+          <BackgroundMusicToggle compact />
+
+          <a
+            href="/subscribe"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-[#0096FF] hover:bg-[#0c82d8] text-white text-sm font-semibold shadow-lg shadow-blue-500/20"
+          >
+            Subscribe
+          </a>
+        </div>
       </div>
     </header>
   );
