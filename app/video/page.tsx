@@ -59,7 +59,7 @@ export default function VideoPage() {
 
       <div className="mt-8 grid md:grid-cols-2 gap-6">
         {videos.map((v) => {
-          const poster = v.poster || guessPoster(v.src) || PLACEHOLDER_POSTER;
+          const poster = v.poster || PLACEHOLDER_POSTER;
           const type = v.src.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4';
           return (
             <figure key={v.src} className="rounded-2xl overflow-hidden border border-white/10 bg-black">

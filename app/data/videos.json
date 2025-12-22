@@ -1,12 +1,17 @@
 [
-  "https://quadlibet-media.s3.amazonaws.com/quadlibetmusic.com/Videos/Quadlib%C3%A8t%20(QB)%20-%20Set%20Me%20Free%20(Official%20Video).mp4",
   {
-    "src": "https://quadlibet-media.s3.amazonaws.com/quadlibetmusic.com/Videos/Quadlib%C3%A8t%20(QB)%20-%20Spread%20Your%20Wings%20(Official%20Video).mp4",
-    "title": "Spread Your Wings — Official Video",
-    "poster": null
+    "src": "/videos/set-me-free.mp4",
+    "title": "Set Me Free",
+    "poster": "/images/video-thumbs/setmefree.jpg"
   },
   {
-    "src": "https://quadlibet-media.s3.amazonaws.com/quadlibetmusic.com/Videos/Quadlibet%20-%20Take%20Me%20I%27m%20Yours%20(1).mp4",
-    "title": "Take Me I’m Yours — Official Video"
+    "src": "/videos/spread-your-wings.mp4",
+    "title": "Spread Your Wings",
+    "poster": "/images/video-thumbs/spreadyourwings-v2.jpg"
+  },
+  {
+    "src": "/videos/take-me-im-yours.mp4",
+    "title": "Take Me I’m Yours",
+    "poster": "/images/video-thumbs/takemeimyours.jpg"
   }
 ]
