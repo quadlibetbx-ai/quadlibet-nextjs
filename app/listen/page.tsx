@@ -17,6 +17,7 @@ type Links = {
 
 type Release = {
   title: string;
+  thumb?: string; // optional thumbnail path in /public
   links: Links;
 };
 
@@ -30,6 +31,7 @@ const ARTIST: Required<Pick<Links, "apple" | "spotify" | "youtube">> = {
 const FEATURED: Release[] = [
   {
     title: "Take Me I’m Yours — Song (Tazmania Freestyle Vol. 4: Still Goin)",
+    thumb: "/images/video-thumbs/takemeimyours.jpg",
     links: {
       apple: "https://music.apple.com/us/song/take-me-im-yours/270944197",
     },
@@ -54,6 +56,7 @@ const FEATURED: Release[] = [
   },
   {
     title: "Set Me Free — Single",
+    thumb: "/images/video-thumbs/setmefree.jpg",
     links: {
       apple: "https://music.apple.com/us/album/set-me-free-single/1364295167",
     },
@@ -176,7 +179,15 @@ export default function ListenPage() {
         <div className={styles.cards}>
           {FEATURED.map((r) => (
             <article key={r.title} className={styles.card}>
-              <div className={styles.cardTitle}>{r.title}</div>
+  {r.thumb && (
+    <img
+      src={r.thumb}
+      alt=""
+      className={styles.thumb}
+      loading="lazy"
+    />
+  )}
+  <div className={styles.cardTitle}>{r.title}</div>
 
               <div className={styles.cardBtns}>
                 {r.links.apple && <PlatformButton platform="apple" href={r.links.apple} />}
