@@ -13,7 +13,7 @@ export default function PressPage() {
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <a
-          href="/press/Quadlibet-Press-Kit.pdf"
+          href="/press/Quadlibet-Press-Kit.pdf?v=3"
           className="block rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10"
           target="_blank"
           rel="noreferrer"
@@ -25,7 +25,7 @@ export default function PressPage() {
         </a>
 
         <a
-          href="/press/Quadlibet-One-Sheet.pdf"
+          href="/press/Quadlibet-One-Sheet.pdf?v=3"
           className="block rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10"
           target="_blank"
           rel="noreferrer"
