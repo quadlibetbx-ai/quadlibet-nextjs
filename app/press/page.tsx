@@ -38,9 +38,10 @@ export default function PressPage() {
       </div>
 
       <p className="mt-10 text-sm text-zinc-400">
-        Contact:{" "}
-        <a className="underline" href="mailto:quadlibetmusic@gmail.com">
-          quadlibetmusic@gmail.com
+        For Booking Quadlibét Contact:{" "}
+        <span className="font-medium">ALC Entertainment</span>{" "}
+        <a className="underline" href="tel:4232224719">
+          423-222-4719
         </a>
       </p>
     </main>
