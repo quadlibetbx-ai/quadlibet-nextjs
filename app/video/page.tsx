@@ -40,13 +40,18 @@ function guessPoster(url: string) {
 
 export default function VideoPage() {
   // Pause other media when one starts
-  const handlePlay = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-    const me = e.currentTarget;
-    document.querySelectorAll('video').forEach((v) => {
-      if (v !== me) (v as HTMLVideoElement).pause();
-    });
-    document.querySelectorAll('audio').forEach((a) => (a as HTMLAudioElement).pause());
-  };
+const handlePlay = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+  const me = e.currentTarget;
+
+  document.querySelectorAll('video').forEach((v) => {
+    if (v !== me) {
+      (v as HTMLVideoElement).pause();
+    }
+  });
+
+  // Pause the background music toggle
+  window.dispatchEvent(new Event('quadlibet:pause-background-music'));
+};
 
   // Cast JSON import to our relaxed input type before mapping
   const raw = (Array.isArray(list) ? (list as unknown as InputItem[]) : []);
