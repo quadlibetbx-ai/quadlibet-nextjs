@@ -173,6 +173,20 @@ export default function ListenPage() {
         </div>
       </header>
 
+              <section className="my-10 mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-12 text-center">
+          <div className="mb-4 text-4xl">♫</div>
+          <h2 className="text-2xl font-bold text-white">
+            A New Listening Experience Is Coming
+          </h2>
+          <p className="mt-4 text-zinc-300 leading-relaxed">
+            We're refreshing the Quadlibét listening experience to bring you
+            a better way to discover and enjoy our music.
+          </p>
+          <p className="mt-5 text-sm font-semibold tracking-wide text-amber-400">
+            CHECK BACK SOON
+          </p>
+        </section>
+
       <section className={styles.section}>
         <h2 className={styles.h2}>Featured Singles</h2>
 
