@@ -28,6 +28,9 @@ export default function BackgroundMusicToggle({ compact = false }: Props) {
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
     const onError = () => setError('Audio failed to load (check URL / permissions)');
+    const onExternalPause = () => a.pause();
+    
+    window.addEventListener('quadlibet:pause-background-music', onExternalPause);
 
     a.addEventListener('play', onPlay);
     a.addEventListener('pause', onPause);
@@ -41,6 +44,7 @@ export default function BackgroundMusicToggle({ compact = false }: Props) {
       a.removeEventListener('play', onPlay);
       a.removeEventListener('pause', onPause);
       a.removeEventListener('error', onError);
+      window.removeEventListener('quadlibet:pause-background-music', onExternalPause);
       audioRef.current = null;
     };
   }, [url]);
