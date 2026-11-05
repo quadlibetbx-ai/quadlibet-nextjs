@@ -24,16 +24,25 @@ export default function NavBar() {
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-3">
-          <BackgroundMusicToggle compact />
+<div className="flex items-center gap-3">
+  <BackgroundMusicToggle compact />
 
-          <a
-            href="/subscribe"
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-[#0096FF] hover:bg-[#0c82d8] text-white text-sm font-semibold shadow-lg shadow-blue-500/20"
-          >
-            Subscribe
-          </a>
-        </div>
+  <a
+    href="https://payhip.com/b/gmDHc"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm font-semibold shadow-lg shadow-fuchsia-500/20"
+  >
+    New Release
+  </a>
+
+  <a
+    href="/subscribe"
+    className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-[#0096FF] hover:bg-[#0c82d8] text-white text-sm font-semibold shadow-lg shadow-blue-500/20"
+  >
+    Subscribe
+  </a>
+</div>
       </div>
     </header>
   );
