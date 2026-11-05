@@ -28,10 +28,8 @@ export default function NavBar() {
   <BackgroundMusicToggle compact />
 
   <a
-    href="https://payhip.com/b/gmDHc"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm font-semibold shadow-lg shadow-fuchsia-500/20"
+    href="/my-love-is-true"
+        className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm font-semibold shadow-lg shadow-fuchsia-500/20"
   >
     New Release
   </a>
