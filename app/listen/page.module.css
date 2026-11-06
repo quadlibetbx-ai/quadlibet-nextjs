@@ -137,7 +137,13 @@
   text-align: center;
   color: white;
 }
-
+.albumCover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
 .artworkLabel,
 .artworkBottom {
   font-size: .75rem;
