@@ -186,10 +186,12 @@ export default function ListenPage() {
       <section className={styles.albumSection}>
         <div className={styles.albumCard}>
           <div className={styles.albumArtwork}>
-            <span className={styles.artworkLabel}>QUADLIBÉT</span>
-            <span className={styles.artworkTitle}>MOOD<br />SWINGS</span>
-            <span className={styles.artworkBottom}>THE ALBUM</span>
-          </div>
+  <img
+    src="/images/releases/mood-swings-cover.PNG"
+    alt="Quadlibét - Mood Swings original album cover"
+    className={styles.albumCover}
+  />
+</div>
 
           <div className={styles.albumInfo}>
             <span className={styles.sectionEyebrow}>FEATURED ALBUM</span>
