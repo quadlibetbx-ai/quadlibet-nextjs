@@ -29,6 +29,7 @@ const singles: Track[] = [
   { id: "sitting-original", title: "Sitting Here", file: "Sitting Here.mp3", collection: "Singles" },
   { id: "spread-cliff", title: "Spread Your Wings (Cliff Potts Mix Edit)", file: "Spread Your Wings (Cliff Potts Mix Edit).mp3", collection: "Singles" },
   { id: "spread-original", title: "Spread Your Wings", file: "Spread Your Wings.mp3", collection: "Singles" },
+  { id: "take-me-original", title: "Take Me I'm Yours", file: "Take Me I'm Yours.mp3", collection: "Singles" },
   { id: "take-me-2022", title: "Take Me I'm Yours (Sexy Lady 2022 Remix)", file: "Take Me I'm Yours (Sexy Lady 2022 Remix).mp3", collection: "Singles" },
   { id: "take-me-latin", title: "Take Me I'm Yours (Sexy Lady Latin Freestyle Club Mix)", file: "Take Me I'm Yours (Sexy Lady_Latin Freestyle Club Mix).mp3", collection: "Singles" },
 ];
