@@ -1,242 +1,335 @@
-// app/listen/page.tsx
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 
-export const metadata = {
-  title: "Quadlibét — Listen",
-  description:
-    "Stream Quadlibét on Apple Music, Spotify, YouTube, Amazon Music, Deezer and more.",
-};
 
-type Links = {
-  apple?: string;
-  spotify?: string;
-  amazon?: string;
-  deezer?: string;
-  youtube?: string;
-};
-
-type Release = {
+type Track = {
+  id: string;
   title: string;
-  thumb?: string; // optional thumbnail path in /public
-  links: Links;
+  file: string;
+  collection: string;
+  number?: number;
 };
 
-const ARTIST: Required<Pick<Links, "apple" | "spotify" | "youtube">> = {
-  apple: "https://music.apple.com/us/album/mood-swings/1408256856",
-  spotify: "https://open.spotify.com/artist/18ssdZ9dy9g4xSjBxQz3n4",
-  // IMPORTANT: replace this with your REAL YouTube channel URL (see Step B)
-  youtube: "https://www.youtube.com/playlist?list=OLAK5uy_klrxcS42VpwCdUAZ25AZEEKHPstahCxAY",
-};
+const CDN = "https://ddjb9raagwzmf.cloudfront.net";
 
-const FEATURED: Release[] = [
-  {
-    title: "Take Me I’m Yours — Song (Tazmania Freestyle Vol. 4: Still Goin)",
-    thumb: "/images/video-thumbs/takemeimyours.jpg",
-    links: {
-      apple: "https://music.apple.com/us/song/take-me-im-yours/270944197",
-    },
-  },
-  {
-    title: "Take Me I’m Yours (Sexy Lady 2022 Remix) — Single",
-    links: {
-      apple: "https://music.apple.com/us/album/take-me-im-yours-sexy-lady-2022-remix/1707401898",
-    },
-  },
-  {
-    title: "Made for Me — Single",
-    links: {
-      apple: "https://music.apple.com/us/album/made-for-me-single/1774374018",
-    },
-  },
-  {
-    title: "Nothing Left to Say — Single",
-    links: {
-      apple: "https://music.apple.com/us/album/nothing-left-to-say-single/1813530189",
-    },
-  },
-  {
-    title: "Set Me Free — Single",
-    thumb: "/images/video-thumbs/setmefree.jpg",
-    links: {
-      apple: "https://music.apple.com/us/album/set-me-free-single/1364295167",
-    },
-  },
-  {
-    title: "Take Me I’m Yours (2022 Remix) — Single",
-    links: {
-      apple:
-        "https://music.apple.com/us/album/take-me-im-yours-sexy-lady-2022-remix-single/1648940177",
-    },
-  },
-  {
-    title: "Tainted Love — Single",
-    links: {
-      apple: "https://music.apple.com/us/album/tainted-love-single/1067457524",
-    },
-  },
-  {
-    title: "Mood Swings",
-    links: {
-      apple: "https://music.apple.com/us/album/mood-swings/1408256856",
-    },
-  },
-];
-
-const MORE_RELEASES: { label: string; href: string; platform: keyof Links }[] = [
-  // Amazon albums
-  { platform: "amazon", label: "Amazon • Album • B0F87MPH7R", href: "https://amazon.com/music/player/albums/B0F87MPH7R?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_Fk3eU8a1lYSOlnmlzm5OULfdb" },
-  { platform: "amazon", label: "Amazon • Album • B07F9MLL2T", href: "https://amazon.com/music/player/albums/B07F9MLL2T?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_alwHoo9b79oWdNhz8iGBaXZrl" },
-  { platform: "amazon", label: "Amazon • Album • B0DK6HL4J4", href: "https://amazon.com/music/player/albums/B0DK6HL4J4?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_ot8VCbHrGU0BZEac14AbYLASZ" },
-  { platform: "amazon", label: "Amazon • Album • B01AR13DLO", href: "https://amazon.com/music/player/albums/B01AR13DLO?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_qVP8NK6cjSRYFvp7XwDsmfeMz&trackAsin=B01AR13E4A" },
-  { platform: "amazon", label: "Amazon • Album • B08CHGPW4H", href: "https://amazon.com/music/player/albums/B08CHGPW4H?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_4ag2gLSwYEHuoko0G5mCIZsN7" },
-  { platform: "amazon", label: "Amazon • Album • B08RSPZR4Y", href: "https://amazon.com/music/player/albums/B08RSPZR4Y?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_H5nMATLzcA3cvs3IENCBQc0v6" },
-  { platform: "amazon", label: "Amazon • Album • B0BHLSW3WK", href: "https://amazon.com/music/player/albums/B0BHLSW3WK?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_EDuZeBx0scC3Dd88ppxEmXQjh" },
-  { platform: "amazon", label: "Amazon • Album • B01N5EKDS3", href: "https://amazon.com/music/player/albums/B01N5EKDS3?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_PlgS8VfUeV2tHThLqKwxVleW8" },
-
-  // Spotify albums
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/4ZqVuNFmaFAxRbtyHXyXRv?si=ro1QfIuiScGNcgb5iilm_w" },
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/2SZ0G9oe09tedqCT5Fpjt8?si=fV_apwAkTgmTn0KAcZX-Iw" },
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/6x9n39awNyrvL6pDCCbpUv?si=qsaxC2NQSnO6lWJTUmv-MQ" },
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/0U5whadEjWNVFrd9cY16Hr?si=T9qtvcf8ThSL5CtWKZQrHQ" },
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/6290DVe71mpBxzMB2rYP3J?si=vGg34qkHRiS7_qP2W0YwCg" },
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/5wBOuOS6GR0XXT4yo42p8d?si=qclHVbZvQCeXDXJq5Mew6Q" },
-  { platform: "spotify", label: "Spotify • Album", href: "https://open.spotify.com/album/4F0Qvf8MgzyehfkrUEctJ8?si=kbfaBdyPQ5GHpZrQgGjQ8w" },
-
-  // Deezer links
-  { platform: "deezer", label: "Deezer", href: "https://link.deezer.com/s/31wzr6GR8ESjSz0mD4z91" },
-  { platform: "deezer", label: "Deezer", href: "https://link.deezer.com/s/31wzssOUUhZDIhTzJv6uC" },
-  { platform: "deezer", label: "Deezer", href: "https://link.deezer.com/s/31wzsWA1jAWuMfaQk2rmz" },
-  { platform: "deezer", label: "Deezer", href: "https://link.deezer.com/s/31wztrVM8GdbFccAKavJz" },
-  { platform: "deezer", label: "Deezer", href: "https://link.deezer.com/s/31wztLpsfZ3yjwo3InQIy" },
-  { platform: "deezer", label: "Deezer", href: "https://link.deezer.com/s/31wzub6niPNZqdIEkS5os" },
-];
-
-function iconFor(platform: keyof Links) {
-  switch (platform) {
-    case "apple":
-      return "";
-    case "spotify":
-      return "◍";
-    case "amazon":
-      return "a";
-    case "deezer":
-      return "≋";
-    case "youtube":
-      return "▶";
-    default:
-      return "•";
-  }
+function audioUrl(file: string) {
+  return `${CDN}/${file.split("/").map(encodeURIComponent).join("/")}`;
 }
 
-function PlatformButton({
-  platform,
-  href,
-}: {
-  platform: keyof Links;
-  href: string;
-}) {
-  return (
-    <a className={styles.platformBtn} href={href} target="_blank" rel="noreferrer">
-      <span className={styles.platformIcon} aria-hidden="true">
-        {iconFor(platform)}
-      </span>
-      <span className={styles.platformText}>
-        {platform === "apple"
-          ? "Apple Music"
-          : platform === "spotify"
-          ? "Spotify"
-          : platform === "amazon"
-          ? "Amazon"
-          : platform === "deezer"
-          ? "Deezer"
-          : platform === "youtube"
-          ? "YouTube"
-          : "Link"}
-      </span>
-    </a>
-  );
-}
+const singles: Track[] = [
+  { id: "guess", title: "Guess Its Time (Radio Edit)", file: "Guess Its Time (Radio Edit).mp3", collection: "Singles" },
+  { id: "christmas-artie", title: "Home for Christmas (Artie Rodriguez Mix)", file: "Home for Christmas (Artie Rodriguez Mix).mp3", collection: "Singles" },
+  { id: "christmas-family", title: "Home for Christmas (Artistik Family)", file: "Home for Christmas (Artistik Family feat. William Valentin, Synthia Figueroa, Lilly Rose, Brittney Alexander and Quadlibet).mp3", collection: "Singles" },
+  { id: "made-for-me", title: "Made For Me", file: "Made For Me.mp3", collection: "Singles" },
+  { id: "nothing-left", title: "Nothing Left to Say (Freestyle Mix)", file: "Nothing Left to Say (Freestyle Mix).mp3", collection: "Singles" },
+  { id: "sitting-cali", title: "Sitting Here (Kenny-Freestyle-Moulton Cali-Mix)", file: "Sitting Here (A Kenny-Freestyle-Moulton Cali-Mix).mp3", collection: "Singles" },
+  { id: "sitting-freestyle", title: "Sitting Here (Freestyle Mix)", file: "Sitting Here (Freestyle Mix).mp3", collection: "Singles" },
+  { id: "sitting-original", title: "Sitting Here", file: "Sitting Here.mp3", collection: "Singles" },
+  { id: "spread-cliff", title: "Spread Your Wings (Cliff Potts Mix Edit)", file: "Spread Your Wings (Cliff Potts Mix Edit).mp3", collection: "Singles" },
+  { id: "spread-original", title: "Spread Your Wings", file: "Spread Your Wings.mp3", collection: "Singles" },
+  { id: "take-me-2022", title: "Take Me I'm Yours (Sexy Lady 2022 Remix)", file: "Take Me I'm Yours (Sexy Lady 2022 Remix).mp3", collection: "Singles" },
+  { id: "take-me-latin", title: "Take Me I'm Yours (Sexy Lady Latin Freestyle Club Mix)", file: "Take Me I'm Yours (Sexy Lady_Latin Freestyle Club Mix).mp3", collection: "Singles" },
+];
+
+const albumTitles = [
+  "If This Is Love",
+  "We Can't Go On",
+  "Tainted Love",
+  "Set Me Free",
+  "Can't Get Enough",
+  "Just Want To",
+  "I Believed in You",
+  "I dream of you",
+  "If I Told Ya",
+  "Tainted Love (Flipzide Remix)",
+  "Take Me",
+  "Now Is the Time",
+  "Never Gonna Give Up",
+  "I Believed in You (Alexies DJ 87 Edit Mix)",
+  "Thoughts of You",
+  "Just Want To (Remix)",
+  "Bonus Track",
+];
+
+const albumTracks: Track[] = albumTitles.map((title, index) => ({
+  id: `mood-${index + 1}`,
+  title,
+  file: `Mood Swings/${index + 1}. ${title}.mp3`,
+  collection: "Mood Swings",
+  number: index + 1,
+}));
+
+const allTracks = [...singles, ...albumTracks];
 
 export default function ListenPage() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [currentTrack, setCurrentTrack] = useState<Track>(singles[0]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playRequested, setPlayRequested] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(0.8);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = volume;
+  }, [volume]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !playRequested) return;
+
+    audio.load();
+    audio.play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        setIsPlaying(false);
+        setPlayRequested(false);
+      });
+  }, [currentTrack, playRequested]);
+
+  function playTrack(track: Track) {
+    setCurrentTrack(track);
+    setPlayRequested(true);
+  }
+
+  function togglePlayback() {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (audio.paused) {
+      setPlayRequested(true);
+      audio.play()
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
+    } else {
+      audio.pause();
+      setIsPlaying(false);
+    }
+  }
+
+  function skipTrack(direction: number) {
+    const index = allTracks.findIndex((track) => track.id === currentTrack.id);
+    const nextIndex = (index + direction + allTracks.length) % allTracks.length;
+    playTrack(allTracks[nextIndex]);
+  }
+
+  function formatTime(seconds: number) {
+    if (!Number.isFinite(seconds)) return "0:00";
+    const minutes = Math.floor(seconds / 60);
+    const remaining = Math.floor(seconds % 60);
+    return `${minutes}:${remaining.toString().padStart(2, "0")}`;
+  }
+
+  const filteredSingles = singles.filter((track) =>
+    track.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const filteredAlbum = albumTracks.filter((track) =>
+    track.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <main className={styles.page}>
-      <header className={styles.hero}>
-        <h1 className={styles.h1}>Listen to Quadlibét</h1>
-        <p className={styles.sub}>
-          Choose a platform, or pick a featured single. Clean, simple, and event-ready.
-        </p>
+      <audio
+        ref={audioRef}
+        src={audioUrl(currentTrack.file)}
+        preload="metadata"
+        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+        onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => skipTrack(1)}
+      />
 
-        <div className={styles.artistRow}>
-          <PlatformButton platform="apple" href={ARTIST.apple} />
-          <PlatformButton platform="spotify" href={ARTIST.spotify} />
-          <PlatformButton platform="youtube" href={ARTIST.youtube} />
-        </div>
+      <header className={styles.hero}>
+        <div className={styles.eyebrow}>QUADLIBÉT PRESENTS</div>
+        <h1 className={styles.title}>THE MUSIC LOUNGE</h1>
+        <p className={styles.subtitle}>
+          Your place to discover, explore and enjoy the music of Quadlibét.
+        </p>
+        <div className={styles.heroAccent}>♫</div>
       </header>
 
-              <section className="my-10 mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-12 text-center">
-          <div className="mb-4 text-4xl">♫</div>
-          <h2 className="text-2xl font-bold text-white">
-            A New Listening Experience Is Coming
-          </h2>
-          <p className="mt-4 text-zinc-300 leading-relaxed">
-            We're refreshing the Quadlibét listening experience to bring you
-            a better way to discover and enjoy our music.
+      <section className={styles.welcome}>
+        <div>
+          <span className={styles.sectionEyebrow}>WELCOME TO</span>
+          <h2>Our Digital Record Store</h2>
+          <p>
+            Explore our singles, remixes and the complete Mood Swings album.
+            Pick a track and let the music take you away.
           </p>
-          <p className="mt-5 text-sm font-semibold tracking-wide text-amber-400">
-            CHECK BACK SOON
-          </p>
-        </section>
+        </div>
+        <div className={styles.recordGraphic}>Q</div>
+      </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.h2}>Featured Singles</h2>
+      <div className={styles.catalogHeader}>
+        <div>
+          <span className={styles.sectionEyebrow}>EXPLORE THE COLLECTION</span>
+          <h2>Music Library</h2>
+        </div>
+        <input
+          className={styles.search}
+          type="search"
+          placeholder="Search tracks..."
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          aria-label="Search music"
+        />
+      </div>
 
-        <div className={styles.cards}>
-          {FEATURED.map((r) => (
-            <article key={r.title} className={styles.card}>
-  {r.thumb && (
-    <img
-      src={r.thumb}
-      alt=""
-      className={styles.thumb}
-      loading="lazy"
-    />
-  )}
-  <div className={styles.cardTitle}>{r.title}</div>
+      <section className={styles.albumSection}>
+        <div className={styles.albumCard}>
+          <div className={styles.albumArtwork}>
+            <span className={styles.artworkLabel}>QUADLIBÉT</span>
+            <span className={styles.artworkTitle}>MOOD<br />SWINGS</span>
+            <span className={styles.artworkBottom}>THE ALBUM</span>
+          </div>
 
-              <div className={styles.cardBtns}>
-                {r.links.apple && <PlatformButton platform="apple" href={r.links.apple} />}
-                {r.links.spotify && <PlatformButton platform="spotify" href={r.links.spotify} />}
-                {r.links.amazon && <PlatformButton platform="amazon" href={r.links.amazon} />}
-                {r.links.deezer && <PlatformButton platform="deezer" href={r.links.deezer} />}
-                {r.links.youtube && <PlatformButton platform="youtube" href={r.links.youtube} />}
-              </div>
-            </article>
+          <div className={styles.albumInfo}>
+            <span className={styles.sectionEyebrow}>FEATURED ALBUM</span>
+            <h2>Mood Swings</h2>
+            <p>17 tracks · Freestyle · Dance · Electronic</p>
+            <button
+              className={styles.primaryButton}
+              onClick={() => playTrack(albumTracks[0])}
+            >
+              ▶ PLAY ALBUM
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.trackPanel}>
+          <div className={styles.trackPanelHeader}>
+            <h3>Album Tracks</h3>
+            <span>17 TRACKS</span>
+          </div>
+
+          {filteredAlbum.map((track) => (
+            <button
+              key={track.id}
+              className={`${styles.trackRow} ${currentTrack.id === track.id ? styles.activeTrack : ""}`}
+              onClick={() => playTrack(track)}
+            >
+              <span className={styles.trackNumber}>
+                {currentTrack.id === track.id && isPlaying
+                  ? "♫"
+                  : track.number}
+              </span>
+              <span className={styles.trackName}>{track.title}</span>
+              <span className={styles.trackPlay}>▶</span>
+            </button>
           ))}
+          {filteredAlbum.length === 0 && (
+            <p className={styles.empty}>No matching album tracks.</p>
+          )}
         </div>
       </section>
 
-      <section className={styles.section}>
-        <details className={styles.details}>
-          <summary className={styles.summary}>More releases</summary>
-
-          <div className={styles.moreGrid}>
-            {MORE_RELEASES.map((x, i) => (
-              <a
-                key={`${x.platform}-${i}`}
-                className={styles.moreItem}
-                href={x.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className={styles.moreIcon} aria-hidden="true">
-                  {iconFor(x.platform)}
-                </span>
-                <span className={styles.moreLabel}>{x.label}</span>
-              </a>
-            ))}
+      <section className={styles.singlesSection}>
+        <div className={styles.sectionHeading}>
+          <div>
+            <span className={styles.sectionEyebrow}>THE QUADLIBÉT COLLECTION</span>
+            <h2>Singles & Remixes</h2>
           </div>
-        </details>
+          <span className={styles.count}>{singles.length} TRACKS</span>
+        </div>
+
+        <div className={styles.singlesGrid}>
+          {filteredSingles.map((track, index) => (
+            <button
+              key={track.id}
+              className={`${styles.singleCard} ${currentTrack.id === track.id ? styles.selectedCard : ""}`}
+              onClick={() => playTrack(track)}
+            >
+              <span className={styles.singleArtwork}>
+                <span className={styles.singleVinyl}>♫</span>
+                <span className={styles.singleIndex}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </span>
+              <span className={styles.singleTitle}>{track.title}</span>
+              <span className={styles.singleArtist}>QUADLIBÉT</span>
+              <span className={styles.singleAction}>
+                {currentTrack.id === track.id && isPlaying
+                  ? "NOW PLAYING"
+                  : "▶ PLAY TRACK"}
+              </span>
+            </button>
+          ))}
+        </div>
+        {filteredSingles.length === 0 && (
+          <p className={styles.empty}>No matching singles.</p>
+        )}
       </section>
+
+      <footer className={styles.footer}>
+        <p>THE MUSIC LOUNGE · BY QUADLIBÉT</p>
+        <span>Independent music. Timeless sound.</span>
+      </footer>
+
+      <div className={styles.player}>
+        <div className={styles.playerTrack}>
+          <div className={styles.miniArtwork}>Q</div>
+          <div className={styles.playerTrackInfo}>
+            <strong>{currentTrack.title}</strong>
+            <span>QUADLIBÉT · {currentTrack.collection}</span>
+          </div>
+        </div>
+
+        <div className={styles.playerCenter}>
+          <div className={styles.playerButtons}>
+            <button onClick={() => skipTrack(-1)} aria-label="Previous track">
+              |◀
+            </button>
+            <button
+              className={styles.playButton}
+              onClick={togglePlayback}
+              aria-label={isPlaying ? "Pause" : "Play"}
+            >
+              {isPlaying ? "Ⅱ" : "▶"}
+            </button>
+            <button onClick={() => skipTrack(1)} aria-label="Next track">
+              ▶|
+            </button>
+          </div>
+
+          <div className={styles.progressRow}>
+            <span>{formatTime(currentTime)}</span>
+            <input
+              className={styles.progress}
+              type="range"
+              min="0"
+              max={duration || 0}
+              value={Math.min(currentTime, duration || 0)}
+              onChange={(event) => {
+                const audio = audioRef.current;
+                if (audio) audio.currentTime = Number(event.target.value);
+              }}
+              aria-label="Playback progress"
+            />
+            <span>{formatTime(duration)}</span>
+          </div>
+        </div>
+
+        <div className={styles.volumeControl}>
+          <span>♫</span>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={(event) => setVolume(Number(event.target.value))}
+            aria-label="Volume"
+          />
+        </div>
+      </div>
     </main>
   );
 }
