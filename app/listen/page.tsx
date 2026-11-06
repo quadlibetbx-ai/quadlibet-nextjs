@@ -53,13 +53,28 @@ const albumTitles = [
   "Bonus Track",
 ];
 
-const albumTracks: Track[] = albumTitles.map((title, index) => ({
-  id: `mood-${index + 1}`,
-  title,
-  file: `Mood Swings/${index + 1}. ${title}.mp3`,
-  collection: "Mood Swings",
-  number: index + 1,
-}));
+
+const albumTracks: Track[] = albumTitles.map((title, index) => {
+  const trackNumber = index + 1;
+
+  const fileName =
+    trackNumber === 2
+      ? "2. We Can’t Go On.mp3"
+      : trackNumber === 7
+      ? "7. I Believed In You.mp3"
+      : trackNumber === 9
+      ? "9.  If I Told Ya.mp3"
+      : `${trackNumber}. ${title}.mp3`;
+
+  return {
+    id: `mood-${trackNumber}`,
+    title,
+    file: `Mood Swings/${fileName}`,
+    collection: "Mood Swings",
+    number: trackNumber,
+  };
+});
+
 
 const allTracks = [...singles, ...albumTracks];
 
