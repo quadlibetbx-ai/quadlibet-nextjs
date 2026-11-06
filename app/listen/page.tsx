@@ -187,7 +187,7 @@ export default function ListenPage() {
         <div className={styles.albumCard}>
           <div className={styles.albumArtwork}>
   <img
-    src="/images/releases/mood-swings-cover.PNG"
+    src="/images/releases/mood-swings-cover.png"
     alt="Quadlibét - Mood Swings original album cover"
     className={styles.albumCover}
   />
