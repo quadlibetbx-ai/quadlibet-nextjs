@@ -380,7 +380,14 @@ export default function ListenPage() {
                 }`}
                 onClick={() => playTrack(track)}
               >
-                <span>{track.title}</span>
+                {track.id === "sitting-cali" && (
+  <img
+    src="/images/releases/kenny-moulton-tribute.png"
+    alt="In memory of Kenny Moulton"
+    className={styles.kennyArtwork}
+  />
+)}
+<span>{track.title}</span>
                 <span>
                   {currentTrack.id === track.id && isPlaying
                     ? "NOW PLAYING"
