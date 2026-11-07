@@ -34,6 +34,23 @@ const singles: Track[] = [
   { id: "take-me-latin", title: "Take Me I'm Yours (Sexy Lady Latin Freestyle Club Mix)", file: "Take Me I'm Yours (Sexy Lady_Latin Freestyle Club Mix).mp3", collection: "Singles" },
 ];
 
+
+const singleArtwork: Record<string, string> = {
+  "guess": "/images/releases/guess-its-time.png",
+  "christmas-artie": "/images/releases/home-for-christmas-artie.png",
+  "christmas-family": "/images/releases/home-for-christmas.png",
+  "made-for-me": "/images/releases/made-for-me.png",
+  "nothing-left": "/images/releases/nothing-left-to-say.png",
+  "sitting-freestyle": "/images/releases/sitting-here.png",
+  "sitting-original": "/images/releases/sitting-here.png",
+  "spread-cliff": "/images/releases/spread-your-wings.png",
+  "spread-original": "/images/releases/spread-your-wings.png",
+  "take-me-original": "/images/releases/take-me-im-yours-original.png",
+  "take-me-2022": "/images/releases/take-me-im-yours-sexy-lady.png",
+  "take-me-latin": "/images/releases/take-me-im-yours-sexy-lady.png",
+};
+
+
 const albumTitles = [
   "If This Is Love",
   "We Can't Go On",
@@ -265,12 +282,24 @@ export default function ListenPage() {
               className={`${styles.singleCard} ${currentTrack.id === track.id ? styles.selectedCard : ""}`}
               onClick={() => playTrack(track)}
             >
-              <span className={styles.singleArtwork}>
-                <span className={styles.singleVinyl}>♫</span>
-                <span className={styles.singleIndex}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </span>
+             
+<span className={styles.singleArtwork}>
+  {singleArtwork[track.id] ? (
+    <img
+      src={singleArtwork[track.id]}
+      alt={`${track.title} artwork`}
+      className={styles.singleArtworkImage}
+    />
+  ) : (
+    <>
+      <span className={styles.singleVinyl}>♫</span>
+      <span className={styles.singleIndex}>
+        {String(index + 1).padStart(2, "0")}
+      </span>
+    </>
+  )}
+</span>
+
               <span className={styles.singleTitle}>{track.title}</span>
               <span className={styles.singleArtist}>QUADLIBÉT</span>
               <span className={styles.singleAction}>
