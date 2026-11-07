@@ -327,7 +327,7 @@ export default function ListenPage() {
             <span className={styles.sectionEyebrow}>THE QUADLIBÉT COLLECTION</span>
             <h2>Singles & Remixes</h2>
           </div>
-          <span className={styles.count}>{singles.length} TRACKS</span>
+          <span className={styles.count}>{releaseGroups.length} RELEASES</span>
         </div>
 
 
