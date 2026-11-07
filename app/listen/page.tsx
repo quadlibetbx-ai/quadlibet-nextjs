@@ -373,28 +373,29 @@ export default function ListenPage() {
         <div className={styles.versionList}>
           {groupTracks.map((track) => (
             <div key={track.id}>
-              <button
-                type="button"
-                className={`${styles.versionButton} ${
-                  currentTrack.id === track.id ? styles.selectedVersion : ""
-                }`}
-                onClick={() => playTrack(track)}
-              >
-                {track.id === "sitting-cali" && (
-  <img
-    src="/images/releases/kenny-moulton-tribute.png"
-    alt="In memory of Kenny Moulton"
-    className={styles.kennyArtwork}
-  />
-)}
-<span>{track.title}</span>
-                <span>
-                  {currentTrack.id === track.id && isPlaying
-                    ? "NOW PLAYING"
-                    : "▶ PLAY"}
-                </span>
-              </button>
+     
+           {track.id === "sitting-cali" && (
+          <img
+            src="/images/releases/kenny-moulton-tribute.png"
+            alt="In memory of Kenny Moulton"
+            className={styles.kennyArtwork}
+          />
+        )}
 
+        <button
+          type="button"
+          className={`${styles.versionButton} ${
+            currentTrack.id === track.id ? styles.selectedVersion : ""
+          }`}
+          onClick={() => playTrack(track)}
+        >
+          <span>{track.title}</span>
+          <span>
+            {currentTrack.id === track.id && isPlaying
+              ? "NOW PLAYING"
+              : "▶ PLAY"}
+          </span>
+        </button>
               {"memorialTrackId" in group && group.memorialTrackId === track.id && (
                 <p className={styles.memorialNote}>
                   In memory of Kenny Moulton. Thank you for the music.
