@@ -49,7 +49,58 @@ const singleArtwork: Record<string, string> = {
   "take-me-2022": "/images/releases/take-me-im-yours-sexy-lady.png",
   "take-me-latin": "/images/releases/take-me-im-yours-sexy-lady.png",
 };
-
+const releaseGroups = [
+  {
+    id: "guess",
+    title: "Guess It's Time",
+    trackIds: ["guess"],
+  },
+  {
+    id: "christmas-artie",
+    title: "Home for Christmas",
+    subtitle: "Artie Rodriguez Mix",
+    trackIds: ["christmas-artie"],
+  },
+  {
+    id: "christmas-family",
+    title: "Home for Christmas",
+    subtitle: "Artistik Family",
+    trackIds: ["christmas-family"],
+  },
+  {
+    id: "made-for-me",
+    title: "Made For Me",
+    trackIds: ["made-for-me"],
+  },
+  {
+    id: "nothing-left",
+    title: "Nothing Left to Say",
+    trackIds: ["nothing-left"],
+  },
+  {
+    id: "sitting-here",
+    title: "Sitting Here",
+    trackIds: ["sitting-original", "sitting-freestyle", "sitting-cali"],
+    memorialTrackId: "sitting-cali",
+  },
+  {
+    id: "spread-your-wings",
+    title: "Spread Your Wings",
+    trackIds: ["spread-original", "spread-cliff"],
+  },
+  {
+    id: "take-me-original",
+    title: "Take Me I'm Yours",
+    subtitle: "Original Recording",
+    trackIds: ["take-me-original"],
+  },
+  {
+    id: "sexy-lady",
+    title: "Take Me I'm Yours",
+    subtitle: "Sexy Lady Remixes",
+    trackIds: ["take-me-2022", "take-me-latin"],
+  },
+];
 
 const albumTitles = [
   "If This Is Love",
@@ -159,9 +210,13 @@ export default function ListenPage() {
     return `${minutes}:${remaining.toString().padStart(2, "0")}`;
   }
 
-  const filteredSingles = singles.filter((track) =>
-    track.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredReleaseGroups = releaseGroups.filter((group) =>
+  group.title.toLowerCase().includes(search.toLowerCase()) ||
+  group.trackIds.some((trackId) => {
+    const track = singles.find((item) => item.id === trackId);
+    return track?.title.toLowerCase().includes(search.toLowerCase()) ?? false;
+  })
+);
 
   const filteredAlbum = albumTracks.filter((track) =>
     track.title.toLowerCase().includes(search.toLowerCase())
@@ -275,44 +330,81 @@ export default function ListenPage() {
           <span className={styles.count}>{singles.length} TRACKS</span>
         </div>
 
-        <div className={styles.singlesGrid}>
-          {filteredSingles.map((track, index) => (
-            <button
-              key={track.id}
-              className={`${styles.singleCard} ${currentTrack.id === track.id ? styles.selectedCard : ""}`}
-              onClick={() => playTrack(track)}
-            >
-             
-<span className={styles.singleArtwork}>
-  {singleArtwork[track.id] ? (
-    <img
-      src={singleArtwork[track.id]}
-      alt={`${track.title} artwork`}
-      className={styles.singleArtworkImage}
-    />
-  ) : (
-    <>
-      <span className={styles.singleVinyl}>♫</span>
-      <span className={styles.singleIndex}>
-        {String(index + 1).padStart(2, "0")}
-      </span>
-    </>
-  )}
-</span>
 
-              <span className={styles.singleTitle}>{track.title}</span>
-              <span className={styles.singleArtist}>QUADLIBÉT</span>
-              <span className={styles.singleAction}>
-                {currentTrack.id === track.id && isPlaying
-                  ? "NOW PLAYING"
-                  : "▶ PLAY TRACK"}
+<div className={styles.singlesGrid}>
+  {filteredReleaseGroups.map((group, index) => {
+    const groupTracks = group.trackIds
+      .map((trackId) => singles.find((track) => track.id === trackId))
+      .filter((track): track is Track => track !== undefined);
+
+    const artwork = singleArtwork[group.trackIds[0]];
+    const isSelected = group.trackIds.includes(currentTrack.id);
+
+    return (
+      <div
+        key={group.id}
+        className={`${styles.singleCard} ${isSelected ? styles.selectedCard : ""}`}
+      >
+        <span className={styles.singleArtwork}>
+          {artwork ? (
+            <img
+              src={artwork}
+              alt={`${group.title} artwork`}
+              className={styles.singleArtworkImage}
+            />
+          ) : (
+            <>
+              <span className={styles.singleVinyl}>♫</span>
+              <span className={styles.singleIndex}>
+                {String(index + 1).padStart(2, "0")}
               </span>
-            </button>
+            </>
+          )}
+        </span>
+
+        <span className={styles.singleTitle}>{group.title}</span>
+
+        {"subtitle" in group && group.subtitle && (
+          <span className={styles.singleArtist}>{group.subtitle}</span>
+        )}
+
+        <span className={styles.singleArtist}>QUADLIBÉT</span>
+
+        <div className={styles.versionList}>
+          {groupTracks.map((track) => (
+            <div key={track.id}>
+              <button
+                type="button"
+                className={`${styles.versionButton} ${
+                  currentTrack.id === track.id ? styles.selectedVersion : ""
+                }`}
+                onClick={() => playTrack(track)}
+              >
+                <span>{track.title}</span>
+                <span>
+                  {currentTrack.id === track.id && isPlaying
+                    ? "NOW PLAYING"
+                    : "▶ PLAY"}
+                </span>
+              </button>
+
+              {"memorialTrackId" in group && group.memorialTrackId === track.id && (
+                <p className={styles.memorialNote}>
+                  In memory of Kenny Moulton. Thank you for the music.
+                </p>
+              )}
+            </div>
           ))}
         </div>
-        {filteredSingles.length === 0 && (
-          <p className={styles.empty}>No matching singles.</p>
-        )}
+      </div>
+    );
+  })}
+</div>
+
+{filteredReleaseGroups.length === 0 && (
+  <p className={styles.empty}>No matching singles.</p>
+)}
+
       </section>
 
       <footer className={styles.footer}>
