@@ -528,4 +528,59 @@
   object-fit: cover;
   border-radius: inherit;
 }
+.versionList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.versionButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  text-align: left;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.versionButton:hover,
+.selectedVersion {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.16);
+}
+
+.versionButton span:last-child {
+  flex-shrink: 0;
+  color: #67e8f9;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.kennyArtwork {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 4px 0 8px;
+}
+
+.memorialNote {
+  margin: 5px 0 4px;
+  color: #d6b878;
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1.5;
+}
 
