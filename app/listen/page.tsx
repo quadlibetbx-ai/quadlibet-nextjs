@@ -270,7 +270,10 @@ export default function ListenPage() {
       original Quadlibét. This is a celebration of the members,
       the music, and the recording that started it all.
     </p>
-
+<p className={styles.tributeRestorationNote}>
+  Restored from the original tape recording — preserving the voices
+  and spirit of the original Quadlibét.
+</p>
     <button
       className={styles.tributeButton}
       onClick={() => playTrack(tributeTrack)}
