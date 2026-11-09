@@ -145,7 +145,14 @@ const albumTracks: Track[] = albumTitles.map((title, index) => {
 });
 
 
-const allTracks = [...singles, ...albumTracks];
+const tributeTrack: Track = {
+  id: "kuriaki-tribute-master",
+  title: "Take Me I'm Yours (Original Quadlibét Tribute Master)",
+  file: "Take Me I'm Yours - Kuriaki Website.mp3",
+  collection: "The Song That Started It All",
+};
+
+const allTracks = [tributeTrack, ...singles, ...albumTracks];
 
 export default function ListenPage() {
   const audioRef = useRef<HTMLAudioElement>(null);
