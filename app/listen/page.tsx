@@ -250,7 +250,35 @@ export default function ListenPage() {
         </p>
         <div className={styles.heroAccent}>♫</div>
       </header>
+<section className={styles.tributeHero}>
+  <div className={styles.tributeArtwork}>
+    <img
+      src="/images/releases/take-me-im-yours-kuriaki-tribute.png"
+      alt="Quadlibét - The Original Members - The Song That Started It All"
+    />
+  </div>
 
+  <div className={styles.tributeContent}>
+    <span className={styles.tributeEyebrow}>
+      A TRIBUTE TO THE ORIGINAL QUADLIBÉT
+    </span>
+
+    <h2>THE SONG THAT STARTED IT ALL</h2>
+
+    <p>
+      Before the remixes, before the years passed, there was the
+      original Quadlibét. This is a celebration of the members,
+      the music, and the recording that started it all.
+    </p>
+
+    <button
+      className={styles.tributeButton}
+      onClick={() => playTrack(tributeTrack)}
+    >
+      ▶ LISTEN TO THE ORIGINAL
+    </button>
+  </div>
+</section>
       <section className={styles.welcome}>
         <div>
           <span className={styles.sectionEyebrow}>WELCOME TO</span>
