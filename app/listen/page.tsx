@@ -532,7 +532,7 @@ export default function ListenPage() {
 
     <div className={styles.storeCard}>
       <img
-        src="/images/releases/Home for Christmas_Quadlibét.png"
+        src="/images/releases/home-for-christmas-quadlibet.png"
         alt="Home for Christmas cover"
         className={styles.storeArtwork}
       />
