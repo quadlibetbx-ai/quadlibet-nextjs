@@ -19,16 +19,10 @@ function audioUrl(file: string) {
 }
 
 const singles: Track[] = [
-  { id: "guess", title: "Guess Its Time (Radio Edit)", file: "Guess Its Time (Radio Edit).mp3", collection: "Singles" },
-  { id: "christmas-artie", title: "Home for Christmas (Artie Rodriguez Mix)", file: "Home for Christmas (Artie Rodriguez Mix).mp3", collection: "Singles" },
   { id: "christmas-family", title: "Home for Christmas (Artistik Family)", file: "Home for Christmas (Artistik Family feat. William Valentin, Synthia Figueroa, Lilly Rose, Brittney Alexander and Quadlibet).mp3", collection: "Singles" },
-  { id: "made-for-me", title: "Made For Me", file: "Made For Me.mp3", collection: "Singles" },
-  { id: "nothing-left", title: "Nothing Left to Say (Freestyle Mix)", file: "Nothing Left to Say (Freestyle Mix).mp3", collection: "Singles" },
   { id: "sitting-cali", title: "Sitting Here (Kenny-Freestyle-Moulton Cali-Mix)", file: "Sitting Here (A Kenny-Freestyle-Moulton Cali-Mix).mp3", collection: "Singles" },
   { id: "sitting-freestyle", title: "Sitting Here (Freestyle Mix)", file: "Sitting Here (Freestyle Mix).mp3", collection: "Singles" },
   { id: "sitting-original", title: "Sitting Here", file: "Sitting Here.mp3", collection: "Singles" },
-  { id: "spread-cliff", title: "Spread Your Wings (Cliff Potts Mix Edit)", file: "Spread Your Wings (Cliff Potts Mix Edit).mp3", collection: "Singles" },
-  { id: "spread-original", title: "Spread Your Wings", file: "Spread Your Wings.mp3", collection: "Singles" },
   { id: "take-me-original", title: "Take Me I'm Yours", file: "Take Me I'm Yours.mp3", collection: "Singles" },
   { id: "take-me-2022", title: "Take Me I'm Yours (Sexy Lady 2022 Remix)", file: "Take Me I'm Yours (Sexy Lady 2022 Remix).mp3", collection: "Singles" },
   { id: "take-me-latin", title: "Take Me I'm Yours (Sexy Lady Latin Freestyle Club Mix)", file: "Take Me I'm Yours (Sexy Lady_Latin Freestyle Club Mix).mp3", collection: "Singles" },
@@ -36,46 +30,19 @@ const singles: Track[] = [
 
 
 const singleArtwork: Record<string, string> = {
-  "guess": "/images/releases/guess-its-time.png",
-  "christmas-artie": "/images/releases/home-for-christmas-artie.png",
   "christmas-family": "/images/releases/home-for-christmas.png",
-  "made-for-me": "/images/releases/made-for-me.png",
-  "nothing-left": "/images/releases/nothing-left-to-say.png",
   "sitting-freestyle": "/images/releases/sitting-here.png",
   "sitting-original": "/images/releases/sitting-here.png",
-  "spread-cliff": "/images/releases/spread-your-wings.png",
-  "spread-original": "/images/releases/spread-your-wings.png",
   "take-me-original": "/images/releases/take-me-im-yours-original.png",
   "take-me-2022": "/images/releases/take-me-im-yours-sexy-lady.png",
   "take-me-latin": "/images/releases/take-me-im-yours-sexy-lady.png",
 };
 const releaseGroups = [
-  {
-    id: "guess",
-    title: "Guess It's Time",
-    trackIds: ["guess"],
-  },
-  {
-    id: "christmas-artie",
-    title: "Home for Christmas",
-    subtitle: "Artie Rodriguez Mix",
-    trackIds: ["christmas-artie"],
-  },
-  {
+   {
     id: "christmas-family",
     title: "Home for Christmas",
     subtitle: "Artistik Family",
     trackIds: ["christmas-family"],
-  },
-  {
-    id: "made-for-me",
-    title: "Made For Me",
-    trackIds: ["made-for-me"],
-  },
-  {
-    id: "nothing-left",
-    title: "Nothing Left to Say",
-    trackIds: ["nothing-left"],
   },
   {
     id: "sitting-here",
@@ -83,12 +50,7 @@ const releaseGroups = [
     trackIds: ["sitting-original", "sitting-freestyle", "sitting-cali"],
     memorialTrackId: "sitting-cali",
   },
-  {
-    id: "spread-your-wings",
-    title: "Spread Your Wings",
-    trackIds: ["spread-original", "spread-cliff"],
-  },
-  {
+   {
     id: "take-me-original",
     title: "Take Me I'm Yours",
     subtitle: "Original Recording",
