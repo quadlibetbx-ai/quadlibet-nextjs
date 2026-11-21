@@ -436,7 +436,7 @@ export default function ListenPage() {
 
     <div className={styles.storeCard}>
       <img
-        src="/images/releases/Quadlibét_ Nothing Left to Say.png"
+        src="/images/releases/nothing-left-to-say-quadlibet.png"
         alt="Nothing Left to Say cover"
         className={styles.storeArtwork}
       />
