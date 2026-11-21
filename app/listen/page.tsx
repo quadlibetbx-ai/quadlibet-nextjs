@@ -453,6 +453,117 @@ export default function ListenPage() {
 
       </section>
 
+{/* QUADLIBÉT DIRECT-TO-FAN STORE */}
+<section className={styles.storeSection}>
+  <div className={styles.sectionHeading}>
+    <div>
+      <span className={styles.sectionEyebrow}>
+        SUPPORT INDEPENDENT MUSIC
+      </span>
+      <h2>THE QUADLIBÉT STORE</h2>
+    </div>
+    <span className={styles.count}>6 RELEASES</span>
+  </div>
+
+  <div className={styles.storeGrid}>
+    <div className={styles.storeCard}>
+      <img
+        src="/images/releases/Rogelio Memorial Tribute_ Spread Your Wings.png"
+        alt="Spread Your Wings cover"
+        className={styles.storeArtwork}
+      />
+      <h3>Spread Your Wings</h3>
+      <p className={styles.storeDescription}>
+        Original Mix + Cliff Potts Mix Edit
+      </p>
+      <p className={styles.storePrice}>$2.98</p>
+      <a className={styles.storeButton} href="https://payhip.com/b/uwpb7" target="_blank" rel="noopener noreferrer">
+        BUY NOW
+      </a>
+    </div>
+
+    <div className={styles.storeCard}>
+      <img
+        src="/images/releases/Quadlibét_Nothing left to Say.png"
+        alt="Nothing Left to Say cover"
+        className={styles.storeArtwork}
+      />
+      <h3>Nothing Left to Say</h3>
+      <p className={styles.storeDescription}>
+        Freestyle Mix + Dance Mix
+      </p>
+      <p className={styles.storePrice}>$2.98</p>
+      <a className={styles.storeButton} href="https://payhip.com/b/c3YRM" target="_blank" rel="noopener noreferrer">
+        BUY NOW
+      </a>
+    </div>
+
+    <div className={styles.storeCard}>
+      <img
+        src="/images/releases/made-for-me.png"
+        alt="Made For Me cover"
+        className={styles.storeArtwork}
+      />
+      <h3>Made For Me</h3>
+      <p className={styles.storeDescription}>
+        2 Versions
+      </p>
+      <p className={styles.storePrice}>$2.98</p>
+      <a className={styles.storeButton} href="https://payhip.com/b/CU0bI" target="_blank" rel="noopener noreferrer">
+        BUY NOW
+      </a>
+    </div>
+
+    <div className={styles.storeCard}>
+      <img
+        src="/images/releases/Rainy Midnight_ Guess It’s Time.png"
+        alt="Guess It's Time cover"
+        className={styles.storeArtwork}
+      />
+      <h3>Guess It's Time</h3>
+      <p className={styles.storeDescription}>
+        6 Versions
+      </p>
+      <p className={styles.storePrice}>$5.99</p>
+      <a className={styles.storeButton} href="https://payhip.com/b/iaVZk" target="_blank" rel="noopener noreferrer">
+        BUY NOW
+      </a>
+    </div>
+
+    <div className={styles.storeCard}>
+      <img
+        src="/images/releases/Home for Christmas_Quadlibét.png"
+        alt="Home for Christmas cover"
+        className={styles.storeArtwork}
+      />
+      <h3>Home for Christmas</h3>
+      <p className={styles.storeDescription}>
+        Artie Rodriguez Mix featuring Brittney
+      </p>
+      <p className={styles.storePrice}>$1.49</p>
+      <a className={styles.storeButton} href="https://payhip.com/b/3YWzn" target="_blank" rel="noopener noreferrer">
+        BUY NOW
+      </a>
+    </div>
+
+    <div className={styles.storeCard}>
+      <img
+        src="/images/releases/my-love-is-true-cover.png"
+        alt="My Love Is True cover"
+        className={styles.storeArtwork}
+      />
+      <h3>My Love Is True</h3>
+      <p className={styles.storeDescription}>
+        Four WAV Files
+      </p>
+      <p className={styles.storePrice}>$4.99</p>
+      <a className={styles.storeButton} href="https://payhip.com/b/gmDHc" target="_blank" rel="noopener noreferrer">
+        BUY NOW
+      </a>
+    </div>
+  </div>
+</section>
+    
       <footer className={styles.footer}>
         <p>THE MUSIC LOUNGE · BY QUADLIBÉT</p>
         <span>Independent music. Timeless sound.</span>
