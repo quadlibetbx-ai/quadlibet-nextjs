@@ -20,7 +20,6 @@ function audioUrl(file: string) {
 
 const singles: Track[] = [
   { id: "christmas-family", title: "Home for Christmas (Artistik Family)", file: "Home for Christmas (Artistik Family feat. William Valentin, Synthia Figueroa, Lilly Rose, Brittney Alexander and Quadlibet).mp3", collection: "Singles" },
-  { id: "sitting-cali", title: "Sitting Here (Kenny-Freestyle-Moulton Cali-Mix)", file: "Sitting Here (A Kenny-Freestyle-Moulton Cali-Mix).mp3", collection: "Singles" },
   { id: "sitting-freestyle", title: "Sitting Here (Freestyle Mix)", file: "Sitting Here (Freestyle Mix).mp3", collection: "Singles" },
   { id: "sitting-original", title: "Sitting Here", file: "Sitting Here.mp3", collection: "Singles" },
   { id: "take-me-original", title: "Take Me I'm Yours", file: "Take Me I'm Yours.mp3", collection: "Singles" },
@@ -47,8 +46,7 @@ const releaseGroups = [
   {
     id: "sitting-here",
     title: "Sitting Here",
-    trackIds: ["sitting-original", "sitting-freestyle", "sitting-cali"],
-    memorialTrackId: "sitting-cali",
+    trackIds: ["sitting-original", "sitting-freestyle"],
   },
    {
     id: "take-me-original",
@@ -374,15 +372,7 @@ export default function ListenPage() {
           {groupTracks.map((track) => (
             <div key={track.id}>
      
-           {track.id === "sitting-cali" && (
-          <img
-            src="/images/releases/kenny-moulton-tribute.png"
-            alt="In memory of Kenny Moulton"
-            className={styles.kennyArtwork}
-          />
-        )}
-
-        <button
+         <button
           type="button"
           className={`${styles.versionButton} ${
             currentTrack.id === track.id ? styles.selectedVersion : ""
@@ -424,7 +414,7 @@ export default function ListenPage() {
       </span>
       <h2>THE QUADLIBÉT STORE</h2>
     </div>
-    <span className={styles.count}>6 RELEASES</span>
+    <span className={styles.count}>8 RELEASES</span>
   </div>
 
   <div className={styles.storeGrid}>
@@ -523,6 +513,38 @@ export default function ListenPage() {
         BUY NOW
       </a>
     </div>
+    
+          <div className={styles.storeCard}>
+            <img
+              src="/images/releases/Hollywood Nights_ In Memory of Kenny Moulton.png"
+              alt="Sitting Here Kenny Moulton Cali-Mix cover"
+              className={styles.storeArtwork}
+            />
+            <h3>Sitting Here (Kenny-Freestyle-Moulton Cali-Mix)</h3>
+            <p className={styles.storeDescription}>
+              Special Freestyle remix by Kenny Moulton
+            </p>
+            <p className={styles.storePrice}>$1.49</p>
+            <a className={styles.storeButton} href="https://payhip.com/b/kqDQH" target="_blank" rel="noopener noreferrer">
+              BUY NOW
+            </a>
+          </div>
+
+          <div className={styles.storeCard}>
+            <img
+              src="/images/releases/Quadlibét_Together Mixes Cover.png"
+              alt="Together feat. Coreena cover"
+              className={styles.storeArtwork}
+            />
+            <h3>Together feat. Coreena</h3>
+            <p className={styles.storeDescription}>
+              Radio Mix + One More Night Mix
+            </p>
+            <p className={styles.storePrice}>$2.49</p>
+            <a className={styles.storeButton} href="https://payhip.com/b/jVzgG" target="_blank" rel="noopener noreferrer">
+              BUY NOW
+            </a>
+          </div>
   </div>
 </section>
     
