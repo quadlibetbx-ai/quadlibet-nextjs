@@ -532,7 +532,7 @@ export default function ListenPage() {
 
           <div className={styles.storeCard}>
             <img
-              src="/images/releases/Quadlibét_Together Mixes Cover.png"
+              src="/images/releases/together-quadlibet-cover.png"
               alt="Together feat. Coreena cover"
               className={styles.storeArtwork}
             />
