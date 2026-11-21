@@ -484,7 +484,7 @@ export default function ListenPage() {
 
     <div className={styles.storeCard}>
       <img
-        src="/images/releases/Quadlibét_Nothing left to Say.png"
+        src="/images/releases/Quadlibét_ Nothing Left to Say.png"
         alt="Nothing Left to Say cover"
         className={styles.storeArtwork}
       />
@@ -509,7 +509,7 @@ export default function ListenPage() {
         2 Versions
       </p>
       <p className={styles.storePrice}>$2.98</p>
-      <a className={styles.storeButton} href="https://payhip.com/b/CU0bI" target="_blank" rel="noopener noreferrer">
+      <a className={styles.storeButton} href="https://payhip.com/b/CU0bl" target="_blank" rel="noopener noreferrer">
         BUY NOW
       </a>
     </div>
