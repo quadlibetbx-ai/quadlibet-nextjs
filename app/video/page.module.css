@@ -1,1 +1,160 @@
 
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(57, 25, 91, 0.22), transparent 55%),
+    #050507;
+  color: #fff;
+  padding: 32px 4%;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.categoryNav {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  flex-wrap: wrap;
+  margin-bottom: 45px;
+}
+
+.categoryButton {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,.6);
+  padding: 10px 2px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+
+.categoryButton:hover,
+.categoryActive {
+  color: #fff;
+  border-bottom-color: #b45cff;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(0, 2.5fr) minmax(120px, 1fr);
+  align-items: center;
+  gap: 28px;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.sideRail {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sideCard {
+  position: relative;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+  opacity: .62;
+  transition: opacity .25s, transform .25s;
+}
+
+.sideCard:hover {
+  opacity: 1;
+  transform: scale(1.035);
+}
+
+.sideCard img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.sideTitle {
+  padding: 9px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.featured {
+  min-width: 0;
+  text-align: center;
+}
+
+.featuredTitle {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.featuredVideo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 20px 70px rgba(0,0,0,.6);
+}
+
+.featuredInfo {
+  margin-top: 20px;
+  color: rgba(255,255,255,.7);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .page {
+    padding: 24px 18px;
+  }
+
+  .stage {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .sideRail {
+    flex-direction: row;
+    overflow-x: auto;
+    order: 2;
+  }
+
+  .sideCard {
+    min-width: 145px;
+  }
+
+  .featured {
+    order: 1;
+  }
+
+  .categoryNav {
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .featuredTitle {
+    font-size: 15px;
+  }
+}
+
